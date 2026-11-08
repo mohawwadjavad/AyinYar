@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
   "name": "آیین‌یار پژوهش — بازرس منابع و رساله",
-  "version": "0.22.0",
-  "description": "آیین‌یار پژوهش ۰.۲۲.۰: انتشار عمومی با فونت محلی وزیرمتن و نماد دانشگاهی مستقل.",
+  "version": "0.22.1",
+  "description": "آیین‌یار پژوهش ۰.۲۲.۱: اصلاح نصب در Zotero 10 و افزودن مسیر به‌روزرسانی پایدار.",
   "author": "محمدجواد شریفی | Mohammad Javad Sharifi",
   "icons": {
     "48": "assets/ayinyar-64.png",
@@ -12,7 +12,9 @@
     "zotero": {
       "id": "ayinyar-university-selector@research.local",
       "strict_min_version": "10.0",
-      "strict_max_version": "10.0.*"
+      "strict_max_version": "10.0.*",
+      "update_url": "https://github.com/mohawwadjavad/AyinYar/releases/latest/download/updates.json"
     }
-  }
+  },
+  "homepage_url": "https://github.com/mohawwadjavad/AyinYar"
 }
