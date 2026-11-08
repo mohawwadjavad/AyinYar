@@ -142,6 +142,9 @@ def main():
     parser.add_argument("--validate-only", action="store_true", help="Run checks without building archives")
     args = parser.parse_args()
     VERSION, qa = validate()
+    manifest_data = json.loads((SRC / "manifest.json").read_text("utf-8"))
+    zotero_data = manifest_data["applications"]["zotero"]
+    expected_update_url = zotero_data["update_url"]
     tag = os.environ.get("GITHUB_REF_NAME", "")
     if tag:
         check(tag == f"v{VERSION}", f"Tag {tag} does not match manifest version v{VERSION}")
@@ -177,7 +180,7 @@ def main():
         check(xpi_zotero.get("update_url") == expected_update_url, "Required Zotero update_url missing from built XPI")
 
     # Publish a Mozilla-style update manifest alongside every release.
-    addon_id = zotero["id"]
+    addon_id = zotero_data["id"]
     updates_manifest = {
         "addons": {
             addon_id: {
