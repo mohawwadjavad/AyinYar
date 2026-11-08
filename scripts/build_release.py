@@ -145,8 +145,9 @@ def main():
     manifest_data = json.loads((SRC / "manifest.json").read_text("utf-8"))
     zotero_data = manifest_data["applications"]["zotero"]
     expected_update_url = zotero_data["update_url"]
-    tag = os.environ.get("GITHUB_REF_NAME", "")
-    if tag:
+    git_ref = os.environ.get("GITHUB_REF", "")
+    if git_ref.startswith("refs/tags/"):
+        tag = git_ref.removeprefix("refs/tags/")
         check(tag == f"v{VERSION}", f"Tag {tag} does not match manifest version v{VERSION}")
     print(f"Validation PASS — AyinYar v{VERSION}")
     print(json.dumps(qa, ensure_ascii=False, indent=2))
