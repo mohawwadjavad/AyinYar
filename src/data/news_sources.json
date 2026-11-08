@@ -1,0 +1,25 @@
+{
+  "version": "0.8.0",
+  "last_reviewed": "2026-10-28",
+  "sources": [
+    {
+      "id": "iau-najafabad-site",
+      "title": "وب‌سایت دانشگاه آزاد اسلامی واحد نجف‌آباد",
+      "category": "institution_website",
+      "url": "https://iaun.iau.ir/",
+      "verification": "institutional_domain",
+      "scope": "university",
+      "note": "دامنه وب‌سایت دانشگاه؛ مطالب آن لزوماً آخرین اطلاعیه نیستند و تاریخ هر مطلب باید جداگانه بررسی شود."
+    },
+    {
+      "id": "aau-re-bale",
+      "title": "اطلاع‌رسانی پژوهشی دانشکده هنر، معماری و شهرسازی — کانال معرفی‌شده در بله",
+      "category": "messaging_channel",
+      "handle": "@aau_re",
+      "url": "https://web.bale.ai/chat?uid=4996644915",
+      "verification": "user_provided_unverified",
+      "scope": "faculty",
+      "note": "لینک توسط کاربر معرفی شده است؛ ارتباط رسمی شناسه با دانشگاه به‌طور مستقل تأیید نشده و پیام‌ها خودکار دریافت نمی‌شوند."
+    }
+  ]
+}

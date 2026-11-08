@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="نماد مستقل آموزشی آیین‌یار">
+  <circle cx="256" cy="256" r="232" fill="#243452"/>
+  <path d="M112 215a144 144 0 0 1 288 0" fill="none" stroke="#26aea4" stroke-width="34" stroke-linecap="round"/>
+  <rect x="145" y="204" width="45" height="143" rx="10" fill="#f8fcff"/>
+  <rect x="234" y="204" width="44" height="143" rx="10" fill="#f8fcff"/>
+  <rect x="322" y="204" width="45" height="143" rx="10" fill="#f8fcff"/>
+  <rect x="118" y="191" width="276" height="29" rx="12" fill="#7acdd5"/>
+  <rect x="106" y="340" width="300" height="29" rx="12" fill="#26aea4"/>
+  <path d="M91 365l156 29v63L91 428z" fill="#f8fcff"/>
+  <path d="M421 365l-156 29v63l156-29z" fill="#e6f3f8"/>
+  <path d="M256 390v69" stroke="#26aea4" stroke-width="8"/>
+  <path d="M116 390l109 20M396 390l-109 20" stroke="#7897b1" stroke-width="5" fill="none"/>
+  <path d="M251 130c22-20 49-5 47 19-2 23-26 34-45 16-17-16-15-27-2-35z" fill="#e6b964"/>
+</svg>

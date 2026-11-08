@@ -1,0 +1,641 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        xmlns:html="http://www.w3.org/1999/xhtml" title="آیین‌یار پژوهش | دستیار پژوهشی">
+  <html:link rel="stylesheet" href="chrome://ayinyar-selector/content/selector.css" />
+  <html:div id="app" dir="rtl">
+    <html:aside class="sidebar" aria-label="ناوبری آیین‌یار">
+      <html:div class="sidebar-header">
+        <html:div class="brand"><html:img src="chrome://ayinyar-selector/content/ayinyar-brand.png" alt="نشان آیین‌یار"/><html:div><html:strong>آیین‌یار پژوهش</html:strong><html:small>AyinYar Research</html:small></html:div></html:div>
+        <html:button type="button" class="nav-btn nav-university" data-page="university"><html:span class="nav-icon" aria-hidden="true">⌂</html:span><html:span class="nav-label">دانشگاه آزاد · نجف‌آباد</html:span></html:button>
+        <html:button type="button" class="nav-btn nav-dashboard active" data-page="dashboard" aria-current="page"><html:span class="nav-icon" aria-hidden="true">▦</html:span><html:span class="nav-label">داشبورد</html:span></html:button>
+      </html:div>
+      <html:div class="sidebar-scroll" id="sidebar-scroll">
+        <html:div class="nav-title">ابزارهای پژوهشی</html:div>
+        <html:nav id="nav" aria-label="بخش‌های پژوهشی">
+          <html:section class="nav-group" data-nav-group="references" role="group" aria-label="منابع و مقالات">
+            <html:button type="button" class="nav-group-toggle" aria-expanded="false" aria-controls="nav-group-references"><html:span class="nav-group-icon" aria-hidden="true">▤</html:span><html:span class="nav-group-label">منابع و مقالات</html:span><html:span class="nav-chevron" aria-hidden="true"></html:span></html:button>
+            <html:div class="nav-group-items" id="nav-group-references" hidden="hidden">
+              <html:button type="button" class="nav-btn" data-page="references"><html:span class="nav-icon" aria-hidden="true">▤</html:span><html:span class="nav-label">بازرس منابع Zotero</html:span></html:button>
+              <html:button type="button" class="nav-btn" data-page="matrix"><html:span class="nav-icon" aria-hidden="true">▦</html:span><html:span class="nav-label">ماتریس پیشینه و شواهدیار</html:span></html:button>
+              <html:button type="button" class="nav-btn" data-page="related"><html:span class="nav-icon" aria-hidden="true">⌕</html:span><html:span class="nav-label">کشف مقالات مرتبط</html:span></html:button>
+            </html:div>
+          </html:section>
+          <html:section class="nav-group" data-nav-group="analysis" role="group" aria-label="تحلیل اسناد و هوش مصنوعی">
+            <html:button type="button" class="nav-group-toggle" aria-expanded="false" aria-controls="nav-group-analysis"><html:span class="nav-group-icon" aria-hidden="true">✦</html:span><html:span class="nav-group-label">تحلیل اسناد و هوش مصنوعی</html:span><html:span class="nav-chevron" aria-hidden="true"></html:span></html:button>
+            <html:div class="nav-group-items" id="nav-group-analysis" hidden="hidden">
+              <html:button type="button" class="nav-btn" data-page="ai-rag"><html:span class="nav-icon" aria-hidden="true">▣</html:span><html:span class="nav-label">گفت‌وگو با PDF</html:span></html:button>
+              <html:button type="button" class="nav-btn" data-page="ai-local"><html:span class="nav-icon" aria-hidden="true">✦</html:span><html:span class="nav-label">هوش مصنوعی محلی و آنلاین</html:span></html:button>
+              <html:button type="button" class="nav-btn" data-page="word"><html:span class="nav-icon" aria-hidden="true">▧</html:span><html:span class="nav-label">بازرس فایل Word</html:span></html:button>
+              <html:button type="button" class="nav-btn" data-page="visuals"><html:span class="nav-icon" aria-hidden="true">▧</html:span><html:span class="nav-label">گالری تصاویر و جداول</html:span></html:button>
+            </html:div>
+          </html:section>
+          <html:section class="nav-group" data-nav-group="rules" role="group" aria-label="ضوابط و راهنمای پژوهش">
+            <html:button type="button" class="nav-group-toggle" aria-expanded="false" aria-controls="nav-group-rules"><html:span class="nav-group-icon" aria-hidden="true">✓</html:span><html:span class="nav-group-label">ضوابط و راهنمای پژوهش</html:span><html:span class="nav-chevron" aria-hidden="true"></html:span></html:button>
+            <html:div class="nav-group-items" id="nav-group-rules" hidden="hidden">
+              <html:button type="button" class="nav-btn" data-page="compliance"><html:span class="nav-icon" aria-hidden="true">✓</html:span><html:span class="nav-label">کنترل انطباق رساله</html:span></html:button>
+              <html:button type="button" class="nav-btn" data-page="regulations"><html:span class="nav-icon" aria-hidden="true">⚖</html:span><html:span class="nav-label">بانک مقررات</html:span></html:button>
+            </html:div>
+          </html:section>
+          <html:section class="nav-group" data-nav-group="services" role="group" aria-label="خدمات و اطلاع‌رسانی">
+            <html:button type="button" class="nav-group-toggle" aria-expanded="false" aria-controls="nav-group-services"><html:span class="nav-group-icon" aria-hidden="true">◉</html:span><html:span class="nav-group-label">خدمات و اطلاع‌رسانی</html:span><html:span class="nav-chevron" aria-hidden="true"></html:span></html:button>
+            <html:div class="nav-group-items" id="nav-group-services" hidden="hidden">
+              <html:button type="button" class="nav-btn" data-page="news"><html:span class="nav-icon" aria-hidden="true">◉</html:span><html:span class="nav-label">اطلاعیه‌ها و اخبار پژوهشی</html:span></html:button>
+              <html:button type="button" class="nav-btn" data-page="deadlines"><html:span class="nav-icon" aria-hidden="true">▣</html:span><html:span class="nav-label">مهلت‌ها و تقویم</html:span></html:button>
+            </html:div>
+          </html:section>
+        </html:nav>
+      </html:div>
+      <html:div class="sidebar-footer">
+        <html:button type="button" class="nav-btn nav-footer-link nav-researcher" data-page="researcher"><html:span class="nav-icon" aria-hidden="true">◉</html:span><html:span class="nav-label">پروفایل پژوهشگر</html:span></html:button>
+        <html:button type="button" class="nav-btn nav-footer-link" data-page="about"><html:span class="nav-icon" aria-hidden="true">ⓘ</html:span><html:span class="nav-label">درباره افزونه</html:span></html:button>
+        <html:div class="sidebar-bottom"><html:span class="dot"></html:span> آفلاین + جست‌وجوی رایگان آنلاین<html:small>نسخه ۰.۲۲.۰</html:small></html:div>
+      </html:div>
+    </html:aside>
+    <html:div class="workspace">
+      <html:header class="topbar"><html:div id="top-title">داشبورد پژوهشی</html:div><html:div class="top-right"><html:span class="top-pill">دانشگاه آزاد · نجف‌آباد</html:span><html:span class="version">v0.22.0</html:span></html:div></html:header>
+      <html:main class="page-container">
+        <html:section id="page-dashboard" class="page active"><html:div class="eyebrow">مرکز کنترل پژوهش</html:div><html:h1>مسیر پژوهش، منظم و مستند.</html:h1><html:p class="lead">مرور وضعیت منابع، فایل Word و بسته مقررات دانشگاهی در یک محیط فارسی. این نسخه ارزیابی رسمی دانشگاه نیست.</html:p>
+          <html:div class="researcher-welcome" aria-label="خوشامدگویی پژوهشگر"><html:div class="researcher-welcome-symbol" aria-hidden="true">✦</html:div><html:div class="researcher-welcome-text"><html:h2 id="researcher-dashboard-greeting">به آیین‌یار پژوهش خوش آمدی.</html:h2><html:p id="researcher-dashboard-detail">نام پژوهشگر از تنظیمات محلی یا حساب Zotero دریافت می‌شود.</html:p></html:div><html:button type="button" class="action secondary" data-go="researcher">ویرایش پروفایل ←</html:button></html:div>
+          <html:div class="stats"><html:div class="stat"><html:span>منابع بررسی‌شده</html:span><html:strong id="stat-items">—</html:strong><html:small>رکوردهای انتخاب‌شده در Zotero</html:small></html:div><html:div class="stat"><html:span>اخطارهای کتاب‌شناختی</html:span><html:strong id="stat-issues">—</html:strong><html:small>پیشنهاد بررسی داده، نه تخلف دانشگاهی</html:small></html:div><html:div class="stat"><html:span>قواعد دانشگاهی فعال</html:span><html:strong>۰</html:strong><html:small>در انتظار نسخه رسمی شیوه‌نامه</html:small></html:div></html:div>
+          <html:div class="two-col"><html:div class="panel"><html:h2>شروع سریع</html:h2><html:p>از پنجره اصلی Zotero چند منبع را انتخاب کن و روی «بازرس منابع» بزن؛ یا یک فایل DOCX محلی را تحلیل کن.</html:p><html:div class="stack"><html:button type="button" class="action primary" data-go="references">بررسی منابع انتخاب‌شده</html:button><html:button type="button" class="action secondary" data-go="matrix">ماتریس پیشینه و شواهدیار</html:button><html:button type="button" class="action secondary" data-go="word">بررسی ساختار فایل Word</html:button><html:button type="button" class="action secondary" data-go="compliance">مقایسه با مرجع موقت</html:button></html:div></html:div><html:div class="panel uni-summary"><html:img src="chrome://ayinyar-selector/content/assets/institution-academic-mark.png" alt="نماد مستقل آموزشی آیین‌یار"/><html:div><html:span class="small-heading">پروفایل فعال</html:span><html:h2>دانشگاه آزاد اسلامی<br/>واحد نجف‌آباد</html:h2><html:span class="muted">قواعد مرکزی + اختصاصی، با تأیید اعتبار</html:span></html:div></html:div></html:div>
+          <html:div class="panel deadline-home"><html:h2>مهلت‌های نزدیک پژوهشی</html:h2><html:p><html:strong id="deadline-count-home">۰</html:strong> مهلت ثبت‌شده طی ۷ روز آینده یا امروز. اطلاعات بر اساس اطلاعیه‌های واردشده توسط خودت است.</html:p><html:button class="action secondary" data-go="deadlines" type="button">مشاهده تقویم مهلت‌ها</html:button></html:div>
+          <html:section class="game-dashboard-card" aria-label="استراحت پژوهشی">
+            <html:div class="game-dashboard-art"><html:img class="game-dashboard-cover" src="chrome://ayinyar-selector/content/assets/game/dashboard-cover.jpg" alt="پوستر بازی فرار از ترم اضافه؛ دانشجو در حال فرار از شهریه‌چی با کارتخوان"/></html:div>
+            <html:div class="game-dashboard-copy"><html:span class="eyebrow">استراحت پژوهشی · بازی رایگان و آفلاین</html:span><html:h2>🎮 فرار از ترم اضافه!</html:h2><html:p>شهریه‌چی دنبالت است! در هفت خان از «جنگل موضوعات گمشده» و «راهروی پروپوزال» تا «روز دفاع» از موانع فرار کن، مأموریت‌های فرعی را کامل کن، نشان‌های عملکرد بگیر و غول‌های پایانی را شکست بده.</html:p><html:button id="open-game" type="button" class="action game-launch">شروع بازی و ماجراجویی ←</html:button><html:small>بازی در پنجره‌ای مستقل باز می‌شود و هیچ تغییری در منابع Zotero ایجاد نمی‌کند.</html:small><html:p id="game-launch-status" class="helper" role="status"></html:p></html:div>
+          </html:section>
+          <html:div class="alert note">بانک پژوهشی نسخه ۰.۲ شامل <html:strong id="reg-count-home">۱۴</html:strong> رکورد مقرراتی است؛ همه مقررات قابل اعمال تا زمان تأیید منابع رسمی غیرفعال‌اند.</html:div>
+        </html:section>
+        <html:section id="page-references" class="page"><html:div class="eyebrow">آزمایشگاه منابع · بدون API پولی</html:div><html:h1>بازرس حرفه‌ای منابع Zotero</html:h1>
+<html:p class="lead">کنترل کیفیت فراداده، DOI و ISSN، پیوست‌ها، تکراری‌ها و شواهد چارک Q1–Q4 مجلات. تمام تحلیل‌ها روی رایانه انجام می‌شوند؛ منابع Zotero تغییر نمی‌کنند.</html:p>
+<html:div class="toolbar"><html:button id="audit-references" class="action primary">بررسی منابع انتخاب‌شده</html:button><html:button class="action secondary" type="button" data-go="related">کشف مقالات مرتبط با منبع ↗</html:button><html:button id="save-reference-report" class="action secondary" disabled="true">ذخیره گزارش JSON</html:button><html:button id="save-reference-csv" class="action secondary" disabled="true">CSV پیشرفته Excel</html:button></html:div>
+<html:div id="reference-status" class="helper" role="status">ابتدا منابع اصلی را در پنجره Zotero انتخاب کن؛ سپس روی بررسی بزن.</html:div>
+<html:div class="refpro-stats" id="refpro-stats"><html:div class="refpro-stat"><html:strong id="refpro-count">۰</html:strong><html:span>منبع بررسی‌شده</html:span></html:div><html:div class="refpro-stat"><html:strong id="refpro-ready">۰</html:strong><html:span>فراداده کامل در معیارهای منتخب</html:span></html:div><html:div class="refpro-stat"><html:strong id="refpro-pdf">۰</html:strong><html:span>منبع دارای PDF</html:span></html:div><html:div class="refpro-stat"><html:strong id="refpro-q">۰</html:strong><html:span>مجله دارای شواهد چارک همان سال</html:span></html:div></html:div>
+<html:section class="refpro-panel"><html:div class="eyebrow">Journal Quartile Evidence</html:div><html:h2>چارک مجلات با ذکر سال و دسته علمی</html:h2>
+<html:p>چارک SJR با JCR و CiteScore یکی نیست؛ هر مجله ممکن است در چند دسته، چارک‌های مختلف داشته باشد. این بخش فقط شواهدی را نشان می‌دهد که کاربر وارد کرده و هنوز به‌طور مستقل تأیید نشده‌اند.</html:p>
+<html:div class="refpro-toolbar"><html:label>سال چارک فایل CSV، اگر ستون سال ندارد<html:input id="refpro-import-year" type="number" min="1990" max="2100" value="2025"/></html:label><html:button id="refpro-import" class="action primary" type="button">واردکردن CSV چارک مجلات</html:button><html:button id="refpro-evidence-export" class="action secondary" type="button">پشتیبان JSON شواهد</html:button></html:div>
+<html:p class="helper" id="refpro-evidence-status" role="status">هنوز فایل رتبه‌بندی وارد نشده است. CSV باید شامل ISSN یا عنوان مجله، چارک، سال و دسته باشد؛ برای فایل‌های SCImago ستون Categories نیز پشتیبانی می‌شود.</html:p>
+<html:div class="refpro-external"><html:a href="https://www.scimagojr.com/" target="_blank" rel="noopener noreferrer">بررسی رایگان SJR در SCImago</html:a><html:span>•</html:span><html:span>داده‌های JCR بدون مجوز همراه افزونه توزیع نمی‌شوند.</html:span></html:div>
+<html:details class="refpro-manual"><html:summary>ثبت دستی شواهد چارک یک مجله</html:summary>
+<html:div class="refpro-form"><html:label>ISSN مجله (پیشنهادی)<html:input id="refpro-manual-issn" placeholder="1234-5679"/></html:label><html:label>عنوان دقیق مجله<html:input id="refpro-manual-journal" placeholder="نام مجله"/></html:label><html:label>سال رتبه‌بندی<html:input id="refpro-manual-year" type="number" value="2025" min="1990" max="2100"/></html:label><html:label>دسته علمی<html:input id="refpro-manual-category" placeholder="مثلاً Architecture"/></html:label><html:label>لینک HTTPS منبع<html:input id="refpro-manual-url" placeholder="https://www.scimagojr.com/..."/></html:label></html:div>
+<html:div class="refpro-choices"><html:span>نوع شاخص</html:span><html:button class="refpro-choice active" data-ref-source="SJR" type="button" aria-pressed="true">SJR</html:button><html:button class="refpro-choice" data-ref-source="JCR" type="button" aria-pressed="false">JCR</html:button><html:button class="refpro-choice" data-ref-source="CiteScore" type="button" aria-pressed="false">CiteScore</html:button></html:div>
+<html:div class="refpro-choices"><html:span>چارک</html:span><html:button class="refpro-choice active" data-ref-quartile="Q1" type="button" aria-pressed="true">Q1</html:button><html:button class="refpro-choice" data-ref-quartile="Q2" type="button" aria-pressed="false">Q2</html:button><html:button class="refpro-choice" data-ref-quartile="Q3" type="button" aria-pressed="false">Q3</html:button><html:button class="refpro-choice" data-ref-quartile="Q4" type="button" aria-pressed="false">Q4</html:button></html:div>
+<html:button id="refpro-manual-save" type="button" class="action secondary">ثبت شواهد در بانک محلی</html:button>
+</html:details></html:section>
+<html:section class="refpro-panel"><html:h2>جدول ممیزی منابع</html:h2><html:p class="helper">امتیاز فراداده فقط میزان تکمیل فیلدهای منتخب را می‌سنجد، نه اعتبار علمی مقاله. در بخش چارک، «ناموجود» به معنی Q4 نیست.</html:p>
+<html:div class="refpro-filter"><html:label>جست‌وجو در نتایج<html:input id="refpro-search" placeholder="عنوان، DOI، نام مجله، ISSN..."/></html:label><html:div class="refpro-choices"><html:button type="button" class="refpro-choice active" data-ref-filter="all" aria-pressed="true">همه</html:button><html:button type="button" class="refpro-choice" data-ref-filter="attention" aria-pressed="false">نیازمند بازبینی</html:button><html:button type="button" class="refpro-choice" data-ref-filter="withq" aria-pressed="false">دارای چارک</html:button><html:button type="button" class="refpro-choice" data-ref-filter="noq" aria-pressed="false">چارک ناموجود</html:button></html:div></html:div>
+<html:div id="refpro-count-status" class="helper"></html:div>
+<html:div class="table-wrap refpro-table-wrap"><html:table class="refpro-table"><html:thead><html:tr><html:th>منبع و نشریه</html:th><html:th>کامل‌بودن فراداده</html:th><html:th>پیوست / برچسب</html:th><html:th>شواهد چارک</html:th><html:th>موارد قابل بررسی</html:th></html:tr></html:thead><html:tbody id="reference-results"><html:tr><html:td colspan="5" class="empty">هنوز منبعی بررسی نشده است.</html:td></html:tr></html:tbody></html:table></html:div>
+<html:div class="refpro-pagination"><html:button id="refpro-prev" class="action secondary" disabled="true" type="button">صفحه قبل</html:button><html:span id="refpro-page">—</html:span><html:button id="refpro-next" class="action secondary" disabled="true" type="button">صفحه بعد</html:button></html:div>
+</html:section>
+<html:div class="alert note">این افزونه وضعیت نمایه‌شدن در Scopus/WoS یا اعتبار رتبه را به‌صورت زنده تأیید نمی‌کند. چارک‌ها صرفاً شواهد واردشده توسط کاربر هستند و هرگز معادل کیفیت علمی تک‌تک مقالات محسوب نمی‌شوند.</html:div></html:section>
+        <html:section id="page-word" class="page"><html:div class="eyebrow">تحلیل سند</html:div><html:h1>بازرس مقدماتی فایل Word</html:h1><html:p class="lead">ساختار فایل .docx را روی دستگاه خودت می‌خواند؛ شامل اندازه صفحه، حاشیه‌ها، فونت‌های تعریف‌شده، شمار فصل‌ها و سرنخ‌های استناد Zotero.</html:p><html:div class="toolbar"><html:button id="choose-docx" class="action primary">انتخاب فایل DOCX</html:button><html:button id="save-docx-report" class="action secondary" disabled="true">ذخیره گزارش JSON</html:button></html:div><html:div id="docx-status" class="helper">فایل روی دستگاه شما خوانده می‌شود و به هیچ سروری ارسال نمی‌شود.</html:div><html:div id="word-results" class="results"><html:div class="empty-card">برای شروع، یک فایل Word واقعی انتخاب کن.</html:div></html:div><html:section class="citations-panel"><html:div class="eyebrow">تحلیل استنادهای زنده</html:div><html:h2>فیلدهای استناد Zotero در Word</html:h2><html:p>شناسایی فیلدهای Zotero در بدنه، پاورقی و پی‌نوشت؛ مقایسه محدود با کتابخانه محلی، بدون تغییر سند.</html:p><html:div id="citation-results"><html:p class="helper">پس از انتخاب فایل DOCX، نتایج بررسی استنادها اینجا نمایش داده می‌شوند.</html:p></html:div>
+<html:section class="integrity-panel"><html:div class="eyebrow">بازبینی علمی، بدون تغییر سند</html:div><html:h2>فهرست اقدامات پیشنهادی برای استنادها</html:h2>
+<html:p class="helper">مقایسه شواهد استناد و فهرست منابع، تکرارهای احتمالی و تفاوت DOI/عنوان با رکورد محلی Zotero. این گزارش صرفاً راهنمای بازبینی است.</html:p>
+<html:div class="toolbar"><html:div class="ay-choice-control ay-choice-integrity"><html:span class="field-label ay-choice-label" id="integrity-filter-label">فیلتر موارد</html:span><html:input type="hidden" id="integrity-filter" value="all"/><html:div class="ay-choice-options" data-choice-for="integrity-filter" role="group" aria-labelledby="integrity-filter-label"><html:button type="button" class="ay-choice-btn" data-choice-value="all" aria-pressed="true">همه موارد</html:button><html:button type="button" class="ay-choice-btn" data-choice-value="review" aria-pressed="false">نیازمند بازبینی</html:button><html:button type="button" class="ay-choice-btn" data-choice-value="info" aria-pressed="false">اطلاع‌رسانی</html:button></html:div></html:div><html:button id="save-integrity-csv" class="action secondary" disabled="true">خروجی CSV فهرست اقدامات</html:button></html:div>
+<html:p class="helper" id="integrity-summary">برای مشاهده نتیجه، یک DOCX تحلیل کنید.</html:p>
+<html:div class="table-wrap"><html:table class="citation-table"><html:thead><html:tr><html:th>وضعیت</html:th><html:th>منبع</html:th><html:th>محل تقریبی</html:th><html:th>شرح و راهکار</html:th></html:tr></html:thead><html:tbody id="integrity-rows"></html:tbody></html:table></html:div><html:p id="integrity-limit" class="helper"></html:p>
+</html:section></html:section><html:section class="manual-panel"><html:div class="eyebrow">آزمایش فنی با اعداد انتخابی شما</html:div><html:h2>مقایسه ابعاد و حاشیه‌ها</html:h2><html:p>این تنظیمات از شیوه‌نامه دانشگاه برداشت نشده‌اند؛ فقط یک مقایسه فنی با معیارهای شخصی هستند.</html:p>
+<html:label class="checklabel"><html:input id="manual-a4" type="checkbox" checked="checked"/> بررسی اندازه A4</html:label>
+<html:div class="margin-inputs"><html:label>بالا (میلی‌متر)<html:input id="manual-top" type="number" min="0" max="80" step="0.5" placeholder="اختیاری"/></html:label><html:label>پایین (میلی‌متر)<html:input id="manual-bottom" type="number" min="0" max="80" step="0.5" placeholder="اختیاری"/></html:label><html:label>راست (میلی‌متر)<html:input id="manual-right" type="number" min="0" max="80" step="0.5" placeholder="اختیاری"/></html:label><html:label>چپ (میلی‌متر)<html:input id="manual-left" type="number" min="0" max="80" step="0.5" placeholder="اختیاری"/></html:label></html:div>
+<html:button id="manual-audit" class="action primary" disabled="true">مقایسه با معیارهای شخصی</html:button><html:div id="manual-results" class="manual-results">پس از انتخاب فایل DOCX، می‌توانی کنترل آزمایشی را اجرا کنی.</html:div>
+</html:section><html:div class="alert note">تشخیص تنظیمات سند به معنی «تأیید انطباق با دانشگاه» نیست؛ مقادیر الزامی نجف‌آباد هنوز در بانک تأیید نشده‌اند.</html:div></html:section>
+        <html:section id="page-compliance" class="page">
+          <html:div class="eyebrow">موتور کنترل انطباق · نسخه آزمایشی</html:div>
+          <html:h1>کنترل فنی رساله و پایان‌نامه</html:h1>
+          <html:p class="lead">مقایسه فایل DOCX با راهنمای مرجع مستند، با تفکیک کارشناسی ارشد و دکتری تخصصی. خروجی راهنمای بازبینی است، نه تأیید رسمی دانشگاه.</html:p>
+          <html:div class="alert note"><html:strong>شفافیت منبع:</html:strong> در این نسخه، اصل شیوه‌نامه جاری واحد نجف‌آباد یا یک قالب‌بندی سراسریِ تأییدشده از سازمان مرکزی دانشگاه آزاد در دسترس و تأیید نشده است. بنابراین قواعد رسمی نجف‌آباد فعال نیستند. مرجع جایگزین، راهنمای رسمی دانشگاه تهران (ویرایش دوم، آبان ۱۴۰۳) است و صرفاً برای مقایسه فنی استفاده می‌شود.</html:div>
+          <html:div class="panel compliance-panel">
+            <html:h2>۱. مقطع تحصیلی</html:h2>
+            <html:div class="compliance-degree-options" role="group" aria-label="مقطع تحصیلی">
+              <html:button type="button" class="deadline-chip" data-compliance-degree="masters" aria-pressed="false">کارشناسی ارشد · پایان‌نامه</html:button>
+              <html:button type="button" class="deadline-chip active" data-compliance-degree="phd" aria-pressed="true">دکتری تخصصی · رساله</html:button>
+            </html:div>
+            <html:p id="compliance-degree-status" class="helper">پروفایل دکتری تخصصی انتخاب شده است.</html:p>
+          </html:div>
+          <html:div class="panel compliance-panel">
+            <html:h2>۲. انتخاب فایل و اجرای بررسی</html:h2>
+            <html:p>فایل Word فقط روی دستگاه شما خوانده می‌شود. موتور حاشیه‌های هر بخش را مقایسه می‌کند و برای فونت‌ها/اندازه‌ها و صفحه عنوان فقط شواهد محدود ارائه می‌دهد.</html:p>
+            <html:div class="toolbar">
+              <html:button id="compliance-choose-docx" type="button" class="action primary">انتخاب فایل DOCX و بررسی</html:button>
+              <html:button id="compliance-run" type="button" class="action secondary" disabled="true">اجرای دوباره بررسی</html:button>
+              <html:button id="compliance-save-json" type="button" class="action secondary" disabled="true">ذخیره گزارش JSON</html:button>
+            </html:div>
+            <html:p id="compliance-file-status" class="helper" role="status">هنوز فایل Word برای این بررسی انتخاب نشده است.</html:p>
+            <html:div class="compliance-profile-grid">
+              <html:article class="compliance-source-card"><html:span class="pill neutral">مرجع فعال · غیرالزام‌آور</html:span><html:h3>دانشگاه تهران · ویرایش دوم آبان ۱۴۰۳</html:h3><html:p>مقادیر حاشیه و جدول اندازه قلم از راهنمای عمومی دانشگاه تهران استخراج شده‌اند. این منبع، شیوه‌نامه دانشگاه آزاد نیست.</html:p><html:a class="source-link" href="https://library.ut.ac.ir/file/download/page/1738658763-67a1d3cb7a0fa-.pdf" target="_blank" rel="noopener noreferrer" data-compliance-source="UT-GENERAL-1403">مشاهده PDF مرجع عمومی</html:a></html:article>
+              <html:article id="compliance-architecture-source-card" class="compliance-source-card"><html:span class="pill neutral">مرجع تکمیلی · ارشد معماری</html:span><html:h3>دانشکده معماری دانشگاه تهران · بازنگری ۱۳۹۸</html:h3><html:p>فقط برای مقایسه A4 در پروفایل کارشناسی ارشد استفاده می‌شود؛ سایر قواعد قدیمی این راهنما در موتور ادغام نشده‌اند.</html:p><html:a class="source-link" href="https://arch.ut.ac.ir/documents/438260/690212/%D8%B1%D8%A7%D9%87%D9%86%D9%85%D8%A7%2B%D8%A7%D8%B1%D8%B4%D8%AF.pdf/be056eda-1c75-0005-58dc-441ff003edb1?download=true&amp;t=1710086754869" target="_blank" rel="noopener noreferrer" data-compliance-source="UT-ARCH-MA-1398">مشاهده دستورالعمل رشته‌ای</html:a></html:article>
+              <html:article class="compliance-source-card muted-source"><html:span class="pill warn">غیرفعال · منبع مرکزی تأیید نشده</html:span><html:h3>دانشگاه آزاد اسلامی</html:h3><html:p>راهنمای واحد پردیس مربوط به یک واحد خاص و سال ۱۳۹۵ است؛ به‌عنوان قانون سراسری دانشگاه آزاد استفاده نمی‌شود. قواعد رسمی نجف‌آباد تا دریافت اصل سند غیرفعال می‌مانند.</html:p><html:a class="source-link" href="https://tmrg.ir/File/Proposal_Form/IAU-Pardis-Branch.pdf" target="_blank" rel="noopener noreferrer" data-compliance-source="IAU-PARDIS-1395">مشاهده نمونه واحدی (فقط جهت شناخت تفاوت‌ها)</html:a></html:article>
+            </html:div>
+          </html:div>
+          <html:div id="compliance-summary-cards" class="stats compliance-stats"><html:div class="stat"><html:span>مطابق مرجع مقایسه‌ای</html:span><html:strong id="compliance-stat-match">—</html:strong><html:small>به معنی تأیید نجف‌آباد نیست</html:small></html:div><html:div class="stat"><html:span>اختلاف / بازبینی</html:span><html:strong id="compliance-stat-review">—</html:strong><html:small>نیازمند بررسی انسانی</html:small></html:div><html:div class="stat"><html:span>شواهد محدود / نامشخص</html:span><html:strong id="compliance-stat-evidence">—</html:strong><html:small>استخراج فنی کامل نیست</html:small></html:div></html:div>
+          <html:div class="panel compliance-panel"><html:h2>۳. گزارش بررسی</html:h2><html:p id="compliance-summary" class="helper" role="status">برای شروع، یک فایل DOCX انتخاب کن.</html:p><html:div class="table-wrap"><html:table class="compliance-table"><html:thead><html:tr><html:th>نتیجه</html:th><html:th>مورد بررسی</html:th><html:th>بخش</html:th><html:th>مرجع مورد انتظار</html:th><html:th>آنچه از فایل دیده شد</html:th><html:th>منبع</html:th></html:tr></html:thead><html:tbody id="compliance-rows"><html:tr><html:td colspan="6" class="empty">هنوز بررسی اجرا نشده است.</html:td></html:tr></html:tbody></html:table></html:div></html:div>
+          <html:div class="panel compliance-panel paragraph-panel">
+            <html:h2>۴. تحلیل تفصیلی پاراگراف‌ها</html:h2>
+            <html:p>فونت و اندازه فارسی/لاتین، فاصله خطوط، فاصله قبل و بعد و تراز هر پاراگراف از ساختار Word و سبک‌ها استخراج می‌شود. شماره‌ها براساس ترتیب XML هستند، نه صفحه چاپی. متن فقط روی دستگاه تحلیل می‌شود.</html:p>
+            <html:div class="deadline-choice-group paragraph-filters" role="group" aria-label="فیلتر بررسی پاراگراف‌ها">
+              <html:button type="button" class="deadline-chip active" data-paragraph-filter="all" aria-pressed="true">همه پاراگراف‌ها</html:button>
+              <html:button type="button" class="deadline-chip" data-paragraph-filter="review" aria-pressed="false">نیازمند بازبینی</html:button>
+              <html:button type="button" class="deadline-chip" data-paragraph-filter="unknown" aria-pressed="false">نامشخص</html:button>
+            </html:div>
+            <html:div class="paragraph-role-controls" role="group" aria-label="نوع محتوای پاراگراف">
+              <html:button type="button" class="deadline-chip active" data-paragraph-role="all" aria-pressed="true">همه نقش‌ها</html:button>
+              <html:button type="button" class="deadline-chip" data-paragraph-role="headings" aria-pressed="false">تیترها و فصل‌ها</html:button>
+              <html:button type="button" class="deadline-chip" data-paragraph-role="captions" aria-pressed="false">شکل‌ها و جداول</html:button>
+              <html:button type="button" class="deadline-chip" data-paragraph-role="body" aria-pressed="false">متن طولانی احتمالی</html:button>
+              <html:button type="button" class="deadline-chip" data-paragraph-role="toc" aria-pressed="false">مدخل‌های فهرست</html:button>
+            </html:div>
+            <html:label class="paragraph-search-label" for="paragraph-search">جست‌وجوی متن، شماره پاراگراف یا سبک</html:label>
+            <html:input id="paragraph-search" class="paragraph-search-input" type="search" placeholder="مثلاً فصل سوم، شکل ۵-۲، یا ۲۸۷"/>
+            <html:p id="paragraph-role-summary" class="helper" role="status"></html:p>
+            <html:p id="paragraph-review-status" class="helper" role="status">پس از بررسی فایل Word، جزئیات پاراگراف‌ها نمایش داده می‌شود.</html:p>
+            <html:div class="table-wrap paragraph-table-wrap"><html:table class="compliance-table paragraph-table"><html:thead><html:tr><html:th>پاراگراف XML</html:th><html:th>بخشی از متن</html:th><html:th>سبک</html:th><html:th>فونت و اندازه فارسی</html:th><html:th>فونت و اندازه لاتین</html:th><html:th>فاصله خطوط</html:th><html:th>قبل / بعد</html:th><html:th>تراز</html:th><html:th>وضعیت</html:th><html:th>توضیح</html:th></html:tr></html:thead><html:tbody id="paragraph-review-rows"><html:tr><html:td colspan="10">فایل انتخاب نشده است.</html:td></html:tr></html:tbody></html:table></html:div>
+            <html:div class="paragraph-page-nav"><html:button type="button" id="paragraph-page-prev" class="action secondary">صفحه قبل</html:button><html:span id="paragraph-page-label">صفحه ۱</html:span><html:button type="button" id="paragraph-page-next" class="action secondary">صفحه بعد</html:button></html:div>
+            <html:p class="helper">این بخش فقط‌خواندنی است. حداکثر ۱۲٬۰۰۰ پاراگراف بررسی می‌شود و همه نتایج تحلیل‌شده از طریق جست‌وجو و صفحه‌بندی در دسترس‌اند. گزارش JSON نیز تمام موارد را نگه می‌دارد. تشخیص نقش از روی متن احتمالی است.</html:p>
+          </html:div>
+          <html:div class="panel compliance-panel"><html:h2>۵. مواردی که هنوز باید دستی بررسی شوند</html:h2><html:div id="compliance-manual-checks" class="compliance-manual-list"><html:p class="helper">پس از اجرای بررسی، فهرست کنترل‌های دستی نمایش داده می‌شود.</html:p></html:div></html:div>
+          <html:div class="alert note">تفسیر وضعیت‌ها: «مطابق مرجع» فقط با منبع جایگزین تطبیق دارد؛ «شاهد محدود» یعنی مقدار در XML/سبک‌ها دیده شده اما استفاده واقعی آن ثابت نشده؛ «بازبینی» اختلاف یا نشانه نامشخص است. این نسخه هیچ تغییری در فایل Word ایجاد نمی‌کند.</html:div>
+        </html:section>
+
+        <html:section id="page-matrix" class="page ay-matrix-page">
+ <html:div class="eyebrow">Review Matrix &amp; Evidence Passport · آفلاین</html:div>
+ <html:h1>ماتریس پیشینه و شواهدیار</html:h1>
+ <html:p class="lead">منابع انتخاب‌شده Zotero را در یک جدول پژوهشی منظم کن؛ هدف، روش، یافته‌ها و محدودیت‌ها را بنویس و برای ادعاهای خود، نقل‌قول و صفحه شاهد ثبت کن. این بخش هیچ ادعا یا ارجاعی را به‌صورت خودکار تأیید نمی‌کند.</html:p>
+ <html:div class="matrix-toolbar" aria-label="ابزارهای ماتریس">
+  <html:button id="matrix-import-zotero" type="button" class="action primary">＋ افزودن منابع انتخاب‌شده از Zotero</html:button>
+  <html:button id="matrix-add-manual" type="button" class="action secondary">افزودن منبع دستی</html:button>
+  <html:button id="matrix-demo" type="button" class="action secondary" hidden="hidden">افزودن نمونه‌های فرضی</html:button>
+ </html:div>
+ <html:div id="matrix-manual-form" class="panel matrix-manual-form" hidden="hidden">
+  <html:h2>افزودن منبع به‌صورت دستی</html:h2><html:p class="helper">منابع دستی فقط در ماتریس نگهداری می‌شوند و به کتابخانه Zotero اضافه نمی‌شوند.</html:p>
+  <html:div class="matrix-form-grid">
+   <html:label class="matrix-label matrix-wide">عنوان منبع (ضروری)<html:input class="matrix-field" id="matrix-manual-title" maxlength="350" placeholder="عنوان مقاله، کتاب یا رساله"/></html:label>
+   <html:label class="matrix-label">نویسندگان<html:input class="matrix-field" id="matrix-manual-authors" maxlength="240"/></html:label>
+   <html:label class="matrix-label">سال انتشار<html:input class="matrix-field" id="matrix-manual-year" maxlength="30"/></html:label>
+   <html:label class="matrix-label matrix-wide">DOI (اختیاری)<html:input class="matrix-field" id="matrix-manual-doi" maxlength="160"/></html:label>
+  </html:div>
+  <html:button type="button" class="action primary" id="matrix-manual-confirm">ثبت منبع دستی</html:button>
+  <html:button type="button" class="action secondary" id="matrix-manual-cancel">انصراف</html:button>
+ </html:div>
+ <html:div id="matrix-status" class="matrix-status" role="status" aria-live="polite">داده‌های این بخش روی دستگاه ذخیره می‌شوند و به سرور ارسال نمی‌شوند.</html:div>
+ <html:div class="matrix-summary" aria-label="خلاصه ماتریس">
+  <html:div><html:strong id="matrix-count">۰</html:strong><html:span>منبع</html:span></html:div>
+  <html:div><html:strong id="matrix-notes-count">۰</html:strong><html:span>فیلد تحلیلی ثبت‌شده</html:span></html:div>
+  <html:div><html:strong id="matrix-evidence-count">۰</html:strong><html:span>شاهد ثبت‌شده</html:span></html:div>
+  <html:div><html:strong id="matrix-reviewed-count">۰</html:strong><html:span>شاهد دارای ادعا، نقل‌قول و صفحه</html:span></html:div>
+ </html:div>
+ <html:div class="matrix-actions-row">
+  <html:button id="matrix-export-csv" type="button" class="action secondary">خروجی CSV برای Excel</html:button>
+  <html:button id="matrix-export-word" type="button" class="action secondary">خروجی HTML برای Word</html:button>
+  <html:button id="matrix-export-evidence" type="button" class="action secondary">CSV شواهد</html:button>
+  <html:button id="matrix-export-json" type="button" class="action secondary">پشتیبان JSON</html:button>
+  <html:button id="matrix-import-json" type="button" class="action secondary">بازیابی و ادغام JSON</html:button>
+ </html:div>
+ <html:details id="matrix-batch-panel" class="panel matrix-batch-panel" open="open">
+  <html:summary class="matrix-batch-summary"><html:span>✦ تحلیل دسته‌ای و گزارش تطبیقی پیشینه</html:span><html:small>حداکثر ۸ مقاله · صف پردازش محلی · تأیید جداگانه</html:small></html:summary>
+  <html:div class="matrix-batch-inner">
+   <html:p class="helper">چند منبع واردشده از Zotero را انتخاب کن. هر PDF به‌صورت جداگانه روی Ollama همین رایانه تحلیل می‌شود و فقط نقل‌قول‌های تطبیق‌یافته در صف بازبینی نمایش داده می‌شوند. هنگام اجرا هیچ چیزی در ماتریس ثبت نمی‌شود.</html:p>
+   <html:div class="matrix-batch-toolbar">
+    <html:button id="matrix-batch-refresh" type="button" class="action secondary">بازخوانی منابع ماتریس</html:button>
+    <html:button id="matrix-batch-select-eight" type="button" class="action secondary">انتخاب حداکثر ۸ منبع اول</html:button>
+    <html:span id="matrix-batch-count" class="matrix-batch-count">۰ منبع انتخاب شده</html:span>
+   </html:div>
+   <html:div id="matrix-batch-list" class="matrix-batch-list" role="group" aria-label="انتخاب منابع برای استخراج دسته‌ای"></html:div>
+   <html:div class="matrix-batch-model-row"><html:button type="button" class="action secondary" id="matrix-batch-check">بررسی مدل‌های محلی Ollama</html:button><html:div id="matrix-batch-models" class="matrix-filter-group" role="group" aria-label="انتخاب مدل محلی"></html:div></html:div>
+   <html:label class="matrix-ai-consent"><html:input id="matrix-batch-consent" type="checkbox"/> با ارسال حداکثر ۹ قطعه متنی از <html:strong>هر مقاله انتخاب‌شده</html:strong> به Ollama روی همین دستگاه موافقم. نتیجه‌ها ممکن است نادرست باشند؛ پردازش به‌صورت ترتیبی است و امکان توقف پس از مقاله فعلی وجود دارد.</html:label>
+   <html:div class="matrix-batch-toolbar">
+    <html:button id="matrix-batch-start" type="button" class="action primary">شروع استخراج دسته‌ای</html:button>
+    <html:button id="matrix-batch-cancel" type="button" class="action secondary" disabled="true">توقف پس از مقاله جاری</html:button>
+    <html:button id="matrix-batch-clear" type="button" class="action secondary">پاک‌کردن پیش‌نویس‌های این جلسه</html:button>
+   </html:div>
+   <html:div class="matrix-batch-progress-track" aria-hidden="true"><html:div id="matrix-batch-bar"></html:div></html:div>
+   <html:p id="matrix-batch-progress" class="matrix-hint">هنوز پردازشی آغاز نشده است.</html:p>
+   <html:p id="matrix-batch-status" class="matrix-ai-feedback" role="status" aria-live="polite">این ابزار فقط از منابع واقعی واردشده در ماتریس استفاده می‌کند. پیش‌نویس‌ها تا زمان تأیید در حافظه همین پنجره باقی می‌مانند.</html:p>
+   <html:div id="matrix-batch-results" class="matrix-batch-results" aria-label="پیشنهادهای هر مقاله"></html:div>
+   <html:button id="matrix-batch-approve" type="button" class="action primary" disabled="true">ثبت پیشنهادهای تیک‌خورده، پس از تأیید نهایی</html:button>
+   <html:div class="matrix-batch-report-head"><html:div><html:h3>گزارش تطبیقیِ قابل پیگیری</html:h3><html:p class="matrix-hint">گزارش فقط از اطلاعات موجود در ماتریس ساخته می‌شود، نه از پیش‌نویس‌های تأییدنشده.</html:p></html:div>
+    <html:div class="matrix-batch-toolbar"><html:button id="matrix-batch-compare" type="button" class="action secondary">ساخت گزارش از منابع انتخاب‌شده</html:button><html:button id="matrix-batch-export-html" type="button" class="action secondary" disabled="true">خروجی Word (HTML)</html:button><html:button id="matrix-batch-export-csv" type="button" class="action secondary" disabled="true">خروجی Excel (CSV)</html:button></html:div>
+   </html:div>
+   <html:div id="matrix-batch-report" aria-label="جدول و پوشش گزارش تطبیقی"></html:div>
+   <html:p class="matrix-batch-warning">احتیاط پژوهشی: هم‌پوشانی واژگان به معنی تأیید نتیجه یا توافق علمی نیست. شماره صفحه PDF همیشه با صفحه چاپی یکسان نیست. پیشنهادهای استخراجی حتی پس از ثبت اولیه نیز «نیازمند بررسی» باقی می‌مانند.</html:p>
+  </html:div>
+ </html:details>
+ <html:section class="panel matrix-overview-panel" aria-label="جدول مقایسه‌ای پیشینه پژوهش">
+  <html:div class="matrix-section-title"><html:h2>جدول مقایسه‌ای پیشینه پژوهش</html:h2><html:span class="muted">برای مشاهده جزئیات، «ویرایش» را انتخاب کن</html:span></html:div>
+  <html:div class="table-wrap matrix-overview-wrap"><html:table class="matrix-overview"><html:thead><html:tr>
+   <html:th>منبع و سال</html:th><html:th>هدف</html:th><html:th>روش تحقیق</html:th><html:th>یافته‌های اصلی</html:th><html:th>محدودیت / شکاف</html:th><html:th>شواهد</html:th><html:th>عملیات</html:th>
+  </html:tr></html:thead><html:tbody id="matrix-overview-body"><html:tr><html:td colspan="7" class="empty">هنوز منبعی ثبت نشده است.</html:td></html:tr></html:tbody></html:table></html:div>
+  <html:div class="matrix-overview-pagination"><html:button type="button" class="action secondary" id="matrix-prev-page">صفحه قبل</html:button><html:span id="matrix-page-number" class="muted">صفحه ۱</html:span><html:button type="button" class="action secondary" id="matrix-next-page">صفحه بعد</html:button></html:div>
+ </html:section>
+ <html:div class="matrix-layout">
+  <html:section class="panel matrix-library" aria-label="منابع ماتریس">
+   <html:div class="matrix-section-title"><html:h2>کتابخانه پیشینه</html:h2><html:span id="matrix-filter-count" class="muted">۰ منبع</html:span></html:div>
+   <html:label for="matrix-search" class="matrix-label">جست‌وجو در منابع و یادداشت‌ها</html:label>
+   <html:input id="matrix-search" class="matrix-field" type="search" placeholder="عنوان، نویسنده، روش یا یافته..."/>
+   <html:div class="matrix-filter-group" role="group" aria-label="فیلتر منابع">
+    <html:button type="button" class="matrix-filter active" data-matrix-filter="all" aria-pressed="true">همه</html:button>
+    <html:button type="button" class="matrix-filter" data-matrix-filter="annotated" aria-pressed="false">دارای یادداشت</html:button>
+    <html:button type="button" class="matrix-filter" data-matrix-filter="evidenced" aria-pressed="false">دارای شاهد</html:button>
+    <html:button type="button" class="matrix-filter" data-matrix-filter="pending" aria-pressed="false">نیازمند تکمیل</html:button>
+   </html:div>
+   <html:div id="matrix-list" class="matrix-list"><html:p class="helper">برای آغاز چند منبع را در Zotero انتخاب کن.</html:p></html:div>
+  </html:section>
+  <html:section id="matrix-editor" class="panel matrix-editor" aria-label="جزئیات منبع و پاسپورت شواهد">
+   <html:div id="matrix-empty-editor" class="matrix-empty">برای ویرایش اطلاعات، یکی از منابع سمت راست را انتخاب کن.</html:div>
+   <html:div id="matrix-editor-body" hidden="hidden">
+    <html:div class="matrix-editor-head"><html:div><html:span class="eyebrow">پرونده پژوهشی منبع</html:span><html:h2 id="matrix-editor-title">—</html:h2><html:p class="muted" id="matrix-editor-meta">—</html:p></html:div>
+     <html:button id="matrix-zotero-jump" type="button" class="action secondary" title="انتخاب این رکورد در کتابخانه Zotero">مشاهده در Zotero</html:button></html:div>
+    <html:details class="matrix-abstract"><html:summary>نمایش چکیده واردشده از فراداده Zotero</html:summary><html:p id="matrix-abstract-text" class="helper">چکیده ثبت نشده است.</html:p></html:details>
+    <html:section class="matrix-ai-panel" aria-label="استخراج پیشنهادی از PDF با Ollama محلی">
+     <html:div class="matrix-ai-title"><html:div><html:span class="eyebrow">PDF → Ollama → Human Review</html:span><html:h3>دستیار استخراج مستند از PDF <html:span>✦</html:span></html:h3></html:div><html:span class="matrix-ai-chip">داوطلبانه · فقط محلی</html:span></html:div>
+     <html:p class="helper">از متن نمایه‌شده PDF، هدف، روش، نمونه، یافته‌ها و محدودیت‌ها را پیشنهاد می‌دهد. هر پیشنهاد باید نقل‌قول قابل تطبیق داشته باشد؛ با تأیید تو وارد ماتریس می‌شود. اگر صفحه در نمایه موجود نباشد، شماره صفحه را حدس نمی‌زند.</html:p>
+     <html:div class="matrix-ai-actions"><html:button type="button" class="action secondary" id="matrix-ai-read">۱. خواندن PDF همین منبع</html:button><html:button type="button" class="action secondary" id="matrix-ai-check">۲. بررسی Ollama</html:button><html:button type="button" class="action secondary" id="matrix-ai-open-pdf" disabled="true">مشاهده پیوست در Zotero</html:button></html:div>
+     <html:div id="matrix-ai-models" class="matrix-filter-group" role="group" aria-label="مدل‌های محلی Ollama"></html:div>
+     <html:label class="matrix-ai-consent"><html:input type="checkbox" id="matrix-ai-consent"/> با ارسال حداکثر ۹ قطعه از متن این PDF فقط به Ollama روی همین رایانه موافقم. می‌دانم مدل ممکن است خطا کند.</html:label>
+     <html:button type="button" class="action primary" id="matrix-ai-analyze">۳. تولید پیشنهادها از شواهد واقعی</html:button>
+     <html:p class="matrix-ai-feedback" id="matrix-ai-status" role="status" aria-live="polite">ابتدا PDF را از Zotero بخوان.</html:p>
+     <html:div id="matrix-ai-suggestions" class="matrix-ai-suggestions" aria-label="پیشنهادهای بازبینی‌نشده"></html:div>
+     <html:button type="button" class="action primary" id="matrix-ai-apply" disabled="true">ثبت فقط پیشنهادهای انتخاب‌شده و تأییدشده</html:button>
+    </html:section>
+    <html:div class="matrix-form-grid">
+     <html:label class="matrix-label">هدف پژوهش<html:textarea id="matrix-aim" rows="2" maxlength="650" placeholder="هدف پژوهش در مقاله چیست؟"></html:textarea></html:label>
+     <html:label class="matrix-label">روش تحقیق<html:textarea id="matrix-method" rows="2" maxlength="450" placeholder="کیفی، کمی، ترکیبی، نوع طرح..."></html:textarea></html:label>
+     <html:label class="matrix-label">جامعه / نمونه<html:textarea id="matrix-sample" rows="2" maxlength="420" placeholder="واحد تحلیل، جامعه، تعداد نمونه..."></html:textarea></html:label>
+     <html:label class="matrix-label">یافته‌های کلیدی<html:textarea id="matrix-findings" rows="2" maxlength="800" placeholder="یافته‌ها را بر اساس متن واقعی مقاله ثبت کن."></html:textarea></html:label>
+     <html:label class="matrix-label">محدودیت‌های پژوهش<html:textarea id="matrix-limitations" rows="2" maxlength="650" placeholder="محدودیت‌هایی که واقعاً گزارش شده‌اند..."></html:textarea></html:label>
+     <html:label class="matrix-label">شکاف احتمالی / مسیر آینده<html:textarea id="matrix-gap" rows="2" maxlength="500" placeholder="برداشت خودت؛ نه ادعای قطعی نبود پژوهش."></html:textarea></html:label>
+     <html:label class="matrix-label">ارتباط با رساله من<html:textarea id="matrix-relevance" rows="2" maxlength="450" placeholder="این منبع چه کمکی به تحقیق من می‌کند؟"></html:textarea></html:label>
+     <html:label class="matrix-label">یادداشت پژوهشگر<html:textarea id="matrix-notes" rows="2" maxlength="800" placeholder="ایده‌ها و نکات تکمیلی..."></html:textarea></html:label>
+    </html:div>
+    <html:div class="matrix-editor-actions"><html:button id="matrix-save-row" type="button" class="action primary">ذخیره یادداشت‌های منبع</html:button><html:button id="matrix-remove-row" type="button" class="action secondary matrix-danger">حذف فقط از ماتریس</html:button></html:div>
+    <html:div class="matrix-evidence-panel">
+      <html:div class="matrix-section-title"><html:h2>پاسپورت شواهد</html:h2><html:span class="muted">نقل‌قول و شماره صفحه، دستی و قابل پیگیری</html:span></html:div>
+      <html:p class="helper">برای هر ادعا، عبارت مربوط از PDF را خودت وارد کن. وضعیت «پشتیبان/متفاوت» فقط برچسب انتخابی توست و تأیید علمی خودکار نیست.</html:p>
+      <html:div id="matrix-evidence-list" class="matrix-evidence-list"></html:div>
+      <html:div class="matrix-form-grid">
+       <html:label class="matrix-label matrix-wide">ادعا یا نکته پژوهشی<html:textarea id="matrix-claim" rows="2" maxlength="440" placeholder="ادعایی که می‌خواهی شاهدش را ثبت کنی..."></html:textarea></html:label>
+       <html:label class="matrix-label matrix-wide">نقل‌قول یا شاهد دقیق از متن منبع<html:textarea id="matrix-quote" rows="2" maxlength="800" placeholder="متن اصلی مرتبط را از PDF وارد کن."></html:textarea></html:label>
+       <html:label class="matrix-label">شماره صفحه در PDF / مقاله<html:input id="matrix-page" class="matrix-field" maxlength="45" placeholder="مثلاً ۱۲ یا ۱۲–۱۴"/></html:label>
+       <html:div class="matrix-label matrix-wide">نوع ارتباط با ادعا (برچسب کاربر)<html:div class="matrix-stance-group" role="group" aria-label="نوع ارتباط شاهد">
+        <html:button type="button" data-matrix-stance="unreviewed" aria-pressed="true" class="matrix-filter active">نیازمند بررسی</html:button>
+        <html:button type="button" data-matrix-stance="supports" aria-pressed="false" class="matrix-filter">پشتیبان ادعا</html:button>
+        <html:button type="button" data-matrix-stance="qualifies" aria-pressed="false" class="matrix-filter">مشروط / محدودکننده</html:button>
+        <html:button type="button" data-matrix-stance="contradicts" aria-pressed="false" class="matrix-filter">شاهد متفاوت</html:button>
+        <html:button type="button" data-matrix-stance="context" aria-pressed="false" class="matrix-filter">اطلاعات زمینه‌ای</html:button>
+       </html:div></html:div>
+       <html:label class="matrix-label matrix-wide">تفسیر و محدودیت شاهد<html:textarea id="matrix-evidence-comment" rows="2" maxlength="550" placeholder="شرایط مطالعه یا نکته احتیاطی..."></html:textarea></html:label>
+      </html:div>
+      <html:button id="matrix-add-evidence" type="button" class="action primary">ثبت شاهد در این منبع</html:button>
+     </html:div>
+   </html:div>
+  </html:section>
+ </html:div>
+ <html:div class="alert note">شفافیت: اطلاعات فراداده از Zotero خوانده می‌شوند؛ فیلدهای تحلیلی، ادعاها و شواهد را کاربر وارد یا تأیید می‌کند. استخراج پیشنهادی از متن نمایه‌شده PDF با رضایت کاربر و Ollama محلی انجام می‌شود. نقل‌قول‌ها فقط در صورت تطبیق متنی ارائه می‌شوند؛ صحت ادعا و شماره صفحه چاپی مقاله نیازمند بررسی پژوهشگر است. هیچ داده‌ای بدون انتخاب و تأیید کاربر وارد ماتریس نمی‌شود. هیچ تغییری در کتابخانه یا فایل‌های Zotero ایجاد نمی‌شود.</html:div>
+</html:section>
+
+        <html:section id="page-related" class="page">
+          <html:div class="eyebrow">Academic Discovery · Online &amp; Free</html:div>
+          <html:h1>کشف مقالات مرتبط</html:h1>
+          <html:p class="lead">از عنوان و کلیدواژه‌های مقاله، رساله یا کتاب انتخاب‌شده در Zotero برای پیدا کردن پژوهش‌های مشابه استفاده کن. داده‌ها تنها با کلیک روی «جست‌وجو» به پایگاه‌های انتخابی ارسال می‌شوند.</html:p>
+          <html:div class="panel related-panel">
+            <html:div class="toolbar"><html:button id="related-pick" type="button" class="action secondary">خواندن منبع انتخاب‌شده از Zotero</html:button></html:div>
+            <html:div class="related-fields"><html:label>عنوان پژوهش<html:input id="related-title" type="text" placeholder="عنوان مقاله یا کتاب" maxlength="300"/></html:label><html:label>کلیدواژه‌ها (با ویرگول جدا کن)<html:input id="related-keywords" type="text" placeholder="فضاهای جمعی، تعامل، معماری" maxlength="300"/></html:label></html:div>
+            <html:div class="related-sourcebox"><html:strong>پایگاه‌های جست‌وجوی داخل افزونه</html:strong><html:div class="related-choices">
+              <html:button type="button" class="related-choice active" data-related-source="crossref" aria-pressed="true">Crossref · رایگان عمومی</html:button>
+              <html:button type="button" class="related-choice active" data-related-source="openalex" aria-pressed="true">OpenAlex · سهمیه رایگان</html:button>
+              <html:button type="button" class="related-choice" data-related-source="semantic" aria-pressed="false">Semantic Scholar · محدودیت درخواست</html:button>
+            </html:div><html:label class="related-keylabel">کلید رایگان OpenAlex (اختیاری؛ فقط همین جلسه استفاده می‌شود)<html:input id="related-openalex-key" type="password" placeholder="برای جست‌وجوی محدود بدون کلید خالی بگذار" autocomplete="off"/></html:label>
+            <html:p class="helper">این سرویس‌ها سهمیه و محدودیت دارند؛ درخواست پولی ارسال نمی‌شود. برای جلوگیری از استفاده اضافی، نتایج در همین جلسه تا ۱۰ دقیقه موقت نگهداری می‌شوند.</html:p></html:div>
+            <html:div class="toolbar"><html:button id="related-run" class="action primary" type="button">جست‌وجوی مقالات مرتبط</html:button><html:button id="related-google" class="action secondary" type="button">جست‌وجو در Google Scholar ↗</html:button></html:div>
+            <html:div class="related-external"><html:span>جست‌وجوی وب مستقیم:</html:span><html:button id="related-external-openalex" type="button" class="action secondary">OpenAlex در وب ↗</html:button><html:button id="related-external-semantic" type="button" class="action secondary">Semantic Scholar در وب ↗</html:button></html:div>
+            <html:p class="helper">Google Scholar نتایج را در مرورگر باز می‌کند، نه در افزونه؛ برای آن API رسمی عمومی رایگان استفاده نشده و از خزش خودکار استفاده نمی‌کنیم.</html:p>
+          </html:div>
+          <html:div class="panel related-panel">
+            <html:div class="related-summary"><html:h2>نتایج پیشنهادی · <html:span id="related-count">۰</html:span></html:h2><html:div><html:span id="related-selected">۰</html:span><html:span> انتخاب‌شده</html:span></html:div></html:div>
+            <html:div id="related-status" class="related-status" role="status">منبع را انتخاب و یک پایگاه را مشخص کن.</html:div>
+            <html:p class="helper">نتایج بر پایه اشتراک واژه‌ها مرتب شده‌اند، نه داوری علمی؛ تکراری‌ها در حد DOI و عنوان حذف می‌شوند.</html:p>
+            <html:div id="related-results" class="related-results"></html:div>
+            <html:div class="related-footer"><html:button type="button" id="related-save-note" class="action primary" disabled="true">پیوندهای انتخابی ← یادداشت زیر منبع Zotero</html:button><html:p class="helper">ثبت یادداشت فقط با تأیید شما انجام می‌شود. هیچ منبعی خودکار وارد Zotero یا حذف نمی‌شود.</html:p></html:div>
+          </html:div>
+        </html:section>
+
+        <html:section id="page-ai-local" class="page">
+          <html:div class="eyebrow">AyinYar AI Hub · Offline + Online Free Tier · 0.22.0</html:div>
+          <html:h1>دستیار هوش مصنوعی آیین‌یار</html:h1>
+          <html:p class="lead">عنوان و چکیده منبع را به فارسی تحلیل کن. بدون نصب Ollama هم می‌توانی با کلید API رایگان خودت از Gemini یا OpenRouter استفاده کنی. این صفحه هنوز استخراج متن کامل PDF یا ارجاع صفحه‌ای ندارد.</html:p>
+          <html:div class="panel ai-panel">
+            <html:h2>۱. انتخاب موتور هوش مصنوعی</html:h2>
+            <html:div class="ai-provider-list" role="group" aria-label="انتخاب ارائه‌دهنده هوش مصنوعی">
+              <html:button type="button" class="ai-provider is-selected" data-ai-provider="ollama" aria-pressed="true">🖥️ Ollama · محلی</html:button>
+              <html:button type="button" class="ai-provider" data-ai-provider="gemini" aria-pressed="false">☁️ Gemini · سهمیه رایگان</html:button>
+              <html:button type="button" class="ai-provider" data-ai-provider="openrouter" aria-pressed="false">🌐 OpenRouter · مدل رایگان</html:button>
+            </html:div>
+            <html:div id="ai-online-panel" class="ai-online-panel" hidden="hidden">
+              <html:p class="ai-online-warning" id="ai-privacy-warning">در حالت آنلاین، متن انتخابی به ارائه‌دهنده ارسال می‌شود. شرایط نگهداری داده و محدودیت سهمیه سرویس را بررسی کن؛ داده حساس را ارسال نکن.</html:p>
+              <html:label class="ai-label">کلید API اختصاصی (فقط در حافظه همین پنجره؛ ذخیره نمی‌شود)<html:input id="ai-online-key" type="password" maxlength="512" autocomplete="off" spellcheck="false" placeholder="کلید API را اینجا وارد کن"/></html:label>
+              <html:div id="ai-online-models" class="ai-model-list" role="group" aria-label="مدل‌های مجاز رایگان"></html:div>
+              <html:p class="helper">Gemini: کلید از Google AI Studio · OpenRouter: کلید از حساب OpenRouter. فقط مدل‌های دارای سهمیه رایگان در این پنل نمایش داده می‌شوند؛ مدل پولی به‌طور خودکار فعال نمی‌شود. اگر پروژه یا کلیدت به حساب دارای صورت‌حساب متصل باشد، هزینه‌ احتمالی به شرایط همان حساب بستگی دارد. سهمیه‌ها ممکن است تغییر کنند.</html:p>
+            </html:div>
+            <html:div id="ai-local-panel">
+              <html:p class="helper">Ollama فقط به http://127.0.0.1:11434 متصل می‌شود؛ مدل‌های ابری Ollama مجاز نیستند.</html:p>
+              <html:div id="ai-models" class="ai-model-list" role="group" aria-label="مدل‌های محلی نصب شده"></html:div>
+            </html:div>
+            <html:div class="toolbar"><html:button id="ai-check" type="button" class="action primary">بررسی اتصال Ollama و مدل‌ها</html:button></html:div>
+            <html:p id="ai-connect-status" class="helper" role="status">برای شروع اتصال محلی را بررسی کن. نتیجه آزمایش فقط وضعیت سرویس در رایانه توست.</html:p>
+          </html:div>
+          <html:div class="panel ai-panel">
+            <html:h2>۲. تعیین متن پژوهشی برای تحلیل</html:h2>
+            <html:div class="toolbar"><html:button id="ai-pick" type="button" class="action secondary">خواندن عنوان و چکیده منبع انتخابی</html:button></html:div>
+            <html:p id="ai-source-status" class="helper" role="status">هنوز منبعی خوانده نشده است.</html:p>
+            <html:label class="ai-label">عنوان منبع<html:input id="ai-title" maxlength="350" type="text" placeholder="عنوان مقاله در Zotero"/></html:label>
+            <html:label class="ai-label">چکیده یا بخش متن مورد تأیید شما<html:textarea id="ai-excerpt" rows="7" maxlength="6000" placeholder="چکیده منبع از Zotero خوانده می‌شود؛ پیش از تحلیل می‌توانی آن را ویرایش کنی."></html:textarea></html:label>
+            <html:p class="helper">فقط عنوان، چکیده/متن و سؤال قابل مشاهده ارسال می‌شوند؛ PDF، کتابخانه کامل و شناسه حساب Zotero ارسال نمی‌شوند. سقف متن ۶۰۰۰ نویسه است. در حالت آنلاین، همین داده‌ها به سرور انتخابی ارسال می‌شوند.</html:p>
+          </html:div>
+          <html:div class="panel ai-panel">
+            <html:h2>۳. درخواست تحلیل</html:h2>
+            <html:div class="ai-mode-list" role="group" aria-label="نوع تحلیل">
+              <html:button type="button" class="ai-mode is-selected" data-ai-mode="summary" aria-pressed="true">خلاصه انتقادی</html:button>
+              <html:button type="button" class="ai-mode" data-ai-mode="methods" aria-pressed="false">روش پژوهش و محدودیت‌ها</html:button>
+              <html:button type="button" class="ai-mode" data-ai-mode="question" aria-pressed="false">سؤال از چکیده</html:button>
+            </html:div>
+            <html:label class="ai-label">سؤال پژوهشی اختیاری<html:input id="ai-question" maxlength="500" placeholder="مثلاً این مقاله چه ارتباطی با فضاهای جمعی دارد؟"/></html:label>
+            <html:label class="ai-consent"><html:input id="ai-consent" type="checkbox"/> <html:span id="ai-consent-text">با ارسال متن، پرسش و پیام‌های همین نشست به Ollama روی رایانه خودم موافقم؛ خروجی باید بازبینی شود.</html:span></html:label>
+            <html:div class="toolbar"><html:button type="button" class="action primary" id="ai-analyze">تحلیل با مدل انتخاب‌شده</html:button><html:button type="button" class="action secondary" id="ai-save-note" disabled="true">ذخیره پاسخ به‌صورت یادداشت Zotero</html:button></html:div>
+            <html:p id="ai-run-status" class="helper" role="status">هیچ تحلیلی اجرا نشده است.</html:p>
+            <html:div id="ai-answer" class="ai-answer" aria-live="polite"></html:div>
+            <html:div id="ai-evidence" class="ai-evidence"></html:div>
+          </html:div>
+          <html:div class="panel ai-panel ai-chat-panel">
+            <html:h2>۴. گفت‌وگوی آزاد با هوش مصنوعی</html:h2>
+            <html:p class="helper">در همین پنجره گفت‌وگو کن؛ حافظه گفتگو فقط تا زمان بازبودن پنجره نگه داشته می‌شود و هنگام تغییر سرویس پاک می‌شود. ارسال پیام‌ها به رضایت فعال در بخش ۳ نیاز دارد.</html:p>
+            <html:div id="ai-chat-history" class="ai-chat-history" aria-live="polite"><html:p class="helper">هنوز پیامی ارسال نشده است.</html:p></html:div>
+            <html:label class="ai-consent"><html:input id="ai-chat-use-context" type="checkbox"/> متن چکیده بالا را هم به‌عنوان زمینه گفت‌وگو ارسال کن (اختیاری؛ حداکثر ۲۵۰۰ نویسه).</html:label>
+            <html:label class="ai-label">پیام جدید<html:textarea id="ai-chat-question" rows="3" maxlength="1500" placeholder="مثلاً تفاوت مسئله پژوهش و سؤال پژوهش چیست؟"></html:textarea></html:label>
+            <html:div class="toolbar"><html:button type="button" class="action primary" id="ai-chat-send">ارسال پیام</html:button><html:button type="button" class="action secondary" id="ai-chat-clear">پاک‌کردن گفت‌وگو</html:button></html:div>
+            <html:p id="ai-chat-status" class="helper" role="status">گفت‌وگو آماده است. برای ارسال آنلاین، ارائه‌دهنده و کلید را تنظیم و رضایت را فعال کن.</html:p>
+          </html:div>
+          <html:div class="alert note">در حالت آنلاین، کلید API فقط در حافظه پنجره باقی می‌ماند و در تنظیمات Zotero ذخیره نمی‌شود. سطح رایگان Gemini ممکن است از داده‌های درخواست برای بهبود محصولات استفاده کند؛ شرایط OpenRouter و ارائه‌دهندگانش متفاوت است. پاسخ مدل تأیید علمی نیست؛ شاهد فقط به معنی تطبیق عبارت با چکیده ورودی است و شماره صفحه ندارد. گفت‌وگوی PDF و ماتریس پیشینه در این نسخه همچنان محلی هستند.</html:div>
+        </html:section>
+
+
+        <html:section id="page-ai-rag" class="page">
+          <html:div class="eyebrow">AyinYar Local RAG · Technical Preview · 0.18.0</html:div>
+          <html:h1>گفت‌وگوی مستند با متن کامل PDF</html:h1>
+          <html:p class="lead">از حداکثر چهار مقاله، کتاب یا رساله انتخاب‌شده در Zotero، متن نمایه‌شده PDFها را بخوان، سؤال بپرس و شواهد واقعی را ببین. هیچ PDF به اینترنت ارسال نمی‌شود.</html:p>
+          <html:div class="alert note">این نسخه از نمایه محلی Zotero استفاده می‌کند. PDFهای اسکن‌شده بدون OCR، فایل‌های بدون نمایه و بخش‌هایی که Zotero نمایه نکرده ممکن است خوانده نشوند. شماره صفحه فقط در صورت وجود داده صفحه‌بندی‌شده قابل تأیید نمایش داده می‌شود؛ در غیر این‌صورت «نامشخص» است.</html:div>
+          <html:div class="panel ai-panel">
+            <html:h2>۱. بارگذاری شواهد PDF از Zotero</html:h2>
+            <html:div class="toolbar"><html:button type="button" id="rag-load" class="action primary">خواندن PDFهای انتخاب‌شده</html:button></html:div>
+            <html:p class="helper" id="rag-read-status" role="status">یک تا چهار منبع دارای PDF را در پنجره اصلی Zotero انتخاب کن.</html:p>
+            <html:div id="rag-sources" class="rag-sources"></html:div>
+          </html:div>
+          <html:div class="panel ai-panel">
+            <html:h2>۲. اتصال مدل محلی و روش جست‌وجو</html:h2>
+            <html:div class="toolbar"><html:button type="button" id="rag-check" class="action secondary">بررسی مدل‌های Ollama</html:button></html:div>
+            <html:p id="rag-model-status" class="helper" role="status">مدل qwen3:4b کافی است. مدل bge-m3 برای جست‌وجوی معنایی اختیاری است.</html:p>
+            <html:div id="rag-models" class="ai-model-list"></html:div>
+          </html:div>
+          <html:div class="panel ai-panel">
+            <html:h2>۳. سؤال از اسناد انتخاب‌شده</html:h2>
+            <html:label class="ai-label">پرسش پژوهشی<html:textarea id="rag-question" rows="3" maxlength="700" placeholder="مثلاً کدام مقاله به انعطاف‌پذیری فضا و تعامل اجتماعی پرداخته است؟"></html:textarea></html:label>
+            <html:label class="ai-consent"><html:input id="rag-consent" type="checkbox"/> با ارسال حداکثر هفت قطعه بازیابی‌شده به Ollama روی همین رایانه موافقم. مدل ممکن است خطا کند.</html:label>
+            <html:div class="toolbar"><html:button type="button" id="rag-ask" class="action primary">پاسخ مستند با مدل محلی</html:button><html:button type="button" id="rag-save" class="action secondary" disabled="true">ذخیره پاسخ در یادداشت Zotero</html:button></html:div>
+            <html:p id="rag-answer-status" class="helper" role="status">در انتظار انتخاب متن و سؤال.</html:p>
+            <html:div id="rag-answer" class="ai-answer"></html:div>
+            <html:h3>قطعات شاهد (قابل بررسی در اصل سند)</html:h3>
+            <html:div id="rag-evidence" class="rag-evidence"></html:div>
+          </html:div>
+          <html:div class="alert note">این نسخه حافظه نمایه را فقط هنگام باز بودن این پنجره نگه می‌دارد و از API ابری استفاده نمی‌کند. اگر شماره صفحه تأییدنشده باشد، آن را به عنوان ارجاع صفحه‌ای در مقاله خود استفاده نکن.</html:div>
+        </html:section>
+
+        <html:section id="page-visuals" class="page">
+          <html:div class="eyebrow">کتابخانه بصری پژوهش · Visual Library</html:div>
+          <html:h1>کتابخانه استخراج تصاویر، نمودارها، جداول و بردارها</html:h1>
+          <html:p class="lead">سه مسیر مکمل برای استخراج آفلاین: مدل ONNX محلی، تصویرهای جاسازی‌شده PDF انتخابی، و برش‌های پیشنهادی از شکل‌ها و جدول‌های PDF بازشده در نمایشگر Zotero. موارد در «همه» و دسته‌های مجزای تصاویر، نمودارها، جدول‌ها، نقشه‌ها، بردارها و فرمول‌ها دیده می‌شوند.</html:p>
+          <html:div class="alert note">اسکن صفحه‌محور با شناسایی عنوان‌ها (Figure، Table، Chart، Diagram، فرمول و معادل‌های فارسی) و برش تقریبی صفحه انجام می‌شود؛ شامل موارد برداری و جدول‌های متنیِ دارای عنوان هم می‌تواند باشد. این برش‌ها **کاندید هستند و باید بازبینی شوند**؛ استخراج برداری به معنی ساخت فایل SVG قابل ویرایش نیست. موارد فاقد عنوان یا PDF اسکن‌شده ممکن است یافت نشوند. هیچ PDF به اینترنت ارسال نمی‌شود.</html:div>
+          <html:div class="panel" id="visual-onnx-panel">
+            <html:div class="eyebrow">DocLayout-YOLO · مدل ONNX محلی · اجرا با CPU</html:div>
+            <html:h2>تشخیص پیشرفته ساختار صفحه (ONNX)</html:h2>
+            <html:p class="helper">مدل تشخیص چیدمان می‌تواند جدول‌ها، فرمول‌ها و شکل‌ها را حتی بدون عنوان شناسایی کند. برای اولین استفاده، «راهنمای راه‌اندازی موتور ONNX» را از بسته همراه دریافت و یک‌بار روی ویندوز اجرا کن. موتور روی 127.0.0.1 اجرا می‌شود و تنها تصویر صفحه رندرشده را دریافت می‌کند؛ PDF اصلی به هیچ سروری ارسال نمی‌شود.</html:p>
+            <html:div class="toolbar">
+              <html:button id="visual-onnx-test" type="button" class="action secondary">آزمایش اتصال موتور ONNX</html:button>
+              <html:button id="visual-onnx-scan" type="button" class="action primary">استخراج پیشرفته تمام صفحات با ONNX</html:button>
+              <html:button id="visual-onnx-stop" type="button" class="action secondary" disabled="true">توقف پردازش ONNX</html:button>
+            </html:div>
+            <html:p class="helper" id="visual-onnx-status" role="status" aria-live="polite">موتور ONNX هنوز بررسی نشده است. ابتدا راه‌انداز ویندوز را اجرا کن؛ سپس اتصال را آزمایش کن.</html:p>
+            <html:div class="alert note">دسته‌بندی اولیه مدل: شکل، جدول، فرمول. تفکیک نمودار، دیاگرام، پلان و عکس بر اساس عنوان‌های مجاور پیشنهاد می‌شود و ممکن است اشتباه باشد. بردارها به‌صورت تصویر PNG بریده می‌شوند، نه SVG قابل ویرایش. برش‌ها نیازمند بازبینی کاربر هستند. هنگام خطای مدل، استخراج قدیمی همچنان مستقل کار می‌کند.</html:div>
+          </html:div>
+          <html:div class="panel">
+            <html:h2>اسکن PDF و استخراج محلی</html:h2>
+            <html:p class="helper">برای تصویرهای جاسازی‌شده، PDFهای Zotero را انتخاب و «استخراج اشیای تصویری» را بزن. برای جدول‌های متنی، نمودارهای برداری، شکل‌ها و فرمول‌های دارای عنوان، ابتدا PDF را در تب مطالعه Zotero باز نگه دار و «اسکن تمام صفحات PDF باز» را بزن. روش بدون AI از رندر PDF در Zotero استفاده می‌کند و به Python نیاز ندارد؛ مسیر ONNX در پنل بالاتر به موتور محلی جداگانه نیاز دارد.</html:p>
+            <html:div class="toolbar"><html:button id="visual-scan-pages" type="button" class="action primary">اسکن تمام صفحات PDF باز (بدون AI)</html:button><html:button id="visual-stop-pages" type="button" class="action secondary" disabled="true">توقف اسکن صفحات</html:button><html:button id="visual-scan-zotero" type="button" class="action secondary">استخراج اشیای تصویری PDF انتخابی</html:button><html:button id="visual-import" type="button" class="action secondary">ورود آلبوم قدیمی JSON</html:button><html:button id="visual-save-all" type="button" class="action secondary">ذخیره همه تصاویر</html:button><html:button id="visual-save-selected" type="button" class="action secondary">ذخیره موارد انتخابی</html:button><html:button id="visual-clear-gallery" type="button" class="action secondary">پاک‌کردن گالری جاری</html:button></html:div>
+            <html:p class="helper" id="visual-status" role="status">برای اسکن جامعِ عنوان‌محور، PDF را در تب داخلی Zotero باز کن؛ برای استخراج تصویر جاسازی‌شده، PDF را در کتابخانه انتخاب کن.</html:p>
+          </html:div>
+          <html:div class="panel crop-panel" id="visual-crop-panel">
+            <html:div class="eyebrow">استخراج دیاگرام‌ها و جداول برداری · نسخه آزمایشی</html:div>
+            <html:h2>برش دستی از صفحه بازشده در Zotero</html:h2>
+            <html:p class="helper">PDF را در تب مطالعه Zotero باز کن و به صفحه موردنظر برو. در این بخش تصویر همان صفحه رندرشده را دریافت کن؛ مستطیل بکش؛ «نمودار، پلان، جدول یا شکل» را مشخص و به گالری اضافه کن. همچنین اگر عنوان شکل/جدول در لایه متن پیدا شود، محدوده پیشنهادی نمایش داده می‌شود.</html:p>
+            <html:div class="toolbar"><html:button type="button" id="crop-capture" class="action primary">دریافت صفحه فعلی PDF باز</html:button><html:button type="button" id="crop-clear" class="action secondary">پاک‌کردن برش</html:button></html:div>
+            <html:p class="helper" role="status" id="crop-status">برای برش نمودارها و جداول برداری، ابتدا PDF را در تب داخلی Zotero باز کن.</html:p>
+            <html:div id="crop-preview-wrap" class="crop-preview-wrap" hidden="hidden">
+              <html:div class="crop-stage"><html:canvas id="crop-page-canvas" class="crop-page-canvas" aria-label="صفحه PDF برای انتخاب محدوده برش"></html:canvas><html:div id="crop-selection" class="crop-selection" hidden="hidden"></html:div></html:div>
+              <html:div id="crop-suggestions" class="crop-suggestions"></html:div>
+              <html:div class="crop-editor"><html:div><html:span class="field-label">نوع عنصر</html:span><html:div class="visual-controls" role="group" aria-label="نوع برش">
+                <html:button type="button" class="deadline-chip active" data-crop-category="figure" aria-pressed="true">شکل / تصویر</html:button>
+                <html:button type="button" class="deadline-chip" data-crop-category="chart" aria-pressed="false">نمودار</html:button>
+                <html:button type="button" class="deadline-chip" data-crop-category="drawing" aria-pressed="false">پلان / دیاگرام</html:button>
+                <html:button type="button" class="deadline-chip" data-crop-category="table" aria-pressed="false">جدول</html:button>
+              </html:div></html:div><html:label class="field-label" for="crop-caption">عنوان و توضیح شکل<html:input id="crop-caption" class="visual-search" type="text" maxlength="160" placeholder="مثلاً شکل ۳: الگوی تعامل در فضای جمعی"/></html:label>
+                <html:button type="button" id="crop-save" class="action primary" disabled="true">افزودن برش به گالری</html:button>
+              </html:div>
+            </html:div>
+            <html:div class="alert note">محدوده‌های پیشنهادی بر اساس عنوان‌های قابل تشخیص هستند و باید دستی کنترل شوند. تنها صفحه‌ای که در نمایشگر داخلی PDF رندر شده برداشت می‌شود؛ برش به بزرگنمایی صفحه وابسته است. این قابلیت از API داخلیِ ناپایدار Zotero استفاده می‌کند و سازگاری آن در Zotero 10.0.6 هنوز نیازمند آزمایش است.</html:div>
+          </html:div>
+          <html:div class="panel">
+            <html:h2>گالری و فیلتر عناصر بصری</html:h2>
+            <html:p id="visual-counts" class="helper">همه ۰ · تصویر ۰ · نمودار ۰ · نقشه ۰ · جدول ۰ · بردار ۰ · فرمول ۰ · نامشخص ۰ · انتخاب‌شده ۰</html:p>
+            <html:div class="visual-controls" role="group" aria-label="فیلتر نوع عنصر">
+              <html:button type="button" class="deadline-chip active" data-visual-filter="all" aria-pressed="true">همه موارد استخراج‌شده</html:button>
+              <html:button type="button" class="deadline-chip" data-visual-filter="figure" aria-pressed="false">تصاویر</html:button>
+              <html:button type="button" class="deadline-chip" data-visual-filter="chart" aria-pressed="false">نمودارها و چارت‌ها</html:button>
+              <html:button type="button" class="deadline-chip" data-visual-filter="drawing" aria-pressed="false">پلان‌ها و دیاگرام‌ها</html:button>
+              <html:button type="button" class="deadline-chip" data-visual-filter="table" aria-pressed="false">جدول‌ها</html:button><html:button type="button" class="deadline-chip" data-visual-filter="vector" aria-pressed="false">بردارها</html:button><html:button type="button" class="deadline-chip" data-visual-filter="formula" aria-pressed="false">فرمول‌ها</html:button><html:button type="button" class="deadline-chip" data-visual-filter="unknown" aria-pressed="false">نامشخص / نیاز به دسته‌بندی</html:button>
+            </html:div>
+            <html:input type="search" id="visual-search" class="visual-search" placeholder="جست‌وجوی عنوان، نوع یا شماره صفحه..."/>
+            <html:div class="toolbar"><html:button type="button" id="visual-select-visible" class="action secondary">انتخاب تمام موارد این فیلتر</html:button><html:button type="button" id="visual-clear-selection" class="action secondary">پاک‌کردن انتخاب‌ها</html:button></html:div>
+            <html:div id="visual-gallery" class="visual-gallery"><html:p class="helper">هنوز آلبومی وارد نشده است.</html:p></html:div><html:dialog id="visual-viewer" class="visual-viewer" aria-label="مشاهده بزرگ مورد استخراج‌شده"><html:div class="visual-viewer-top"><html:strong id="visual-viewer-title"></html:strong><html:button type="button" id="visual-viewer-close" class="action secondary">بستن</html:button></html:div><html:img id="visual-viewer-image" alt="پیش‌نمایش بزرگ مورد استخراج‌شده"/><html:p id="visual-viewer-meta" class="helper"></html:p></html:dialog>
+            <html:p class="helper">برای استفاده از تصاویر در مقاله یا رساله، منبع را ذکر کن، شماره صفحه را در PDF بررسی کن و حقوق نشر را رعایت کن. فایل‌های استخراجی ممکن است شامل بخشی از متن اطراف شکل باشند؛ قبل از استفاده کنترل کن.</html:p>
+          </html:div>
+        </html:section>
+        <html:section id="page-regulations" class="page"><html:div class="eyebrow">مستندات و بخشنامه‌ها</html:div><html:h1>بانک مقررات دانشگاهی</html:h1><html:p class="lead">نمایش رکوردهای تحقیق‌شده با وضعیت اعتبار. هیچ‌کدام در این نسخه حکم قطعی ایجاد نمی‌کنند.</html:p><html:div class="toolbar"><html:input id="rule-search" type="search" placeholder="جست‌وجوی عنوان، شماره یا موضوع بخشنامه..."/><html:span class="counter" id="reg-count">—</html:span></html:div><html:div id="rules-list" class="rule-list"></html:div></html:section>
+        <html:section id="page-news" class="page">
+          <html:div class="eyebrow">مرکز اطلاع‌رسانی پژوهشی</html:div>
+          <html:h1>اطلاعیه‌ها و اخبار پژوهشی</html:h1>
+          <html:p class="lead">منابع اطلاع‌رسانی را یکجا نگه دار؛ اطلاعیه‌های مهم را همراه تاریخ و لینک پیام اصلی ثبت، دسته‌بندی و جست‌وجو کن. این نسخه پیام‌ها را خودکار از بله دریافت نمی‌کند.</html:p>
+          <html:div class="alert note news-disclaimer">توجه: معرفی کانال به معنی احراز هویت رسمی آن نیست. هیچ خبر یا پیام کانال به‌صورت خودکار وارد بانک مقررات لازم‌الاجرا نمی‌شود.</html:div>
+          <html:div class="news-sources" id="news-sources"></html:div>
+          <html:div class="news-grid">
+            <html:section class="panel news-entry-panel">
+              <html:h2>ثبت دستی اطلاعیه مستند</html:h2>
+              <html:p class="helper">متن کوتاه و تاریخ را از پیام اصلی وارد کن. همه اطلاعات فقط روی همین رایانه ذخیره می‌شوند.</html:p>
+              <html:label class="field-label" for="news-title">عنوان اطلاعیه *</html:label><html:input id="news-title" class="news-input" type="text" maxlength="180" placeholder="مثلاً اطلاعیه برگزاری کارگاه پژوهشی"/>
+              <html:div class="ay-news-choice-stack"><html:div class="ay-choice-control ay-choice-sources"><html:span class="field-label ay-choice-label" id="news-source-label">منبع اطلاعیه *</html:span><html:input type="hidden" id="news-source" value="aau-re-bale"/><html:div class="ay-choice-options" data-choice-for="news-source" role="group" aria-labelledby="news-source-label"><html:button type="button" class="ay-choice-btn" data-choice-value="aau-re-bale" aria-pressed="true">کانال بله @aau_re (انتساب رسمی تأییدنشده)</html:button><html:button type="button" class="ay-choice-btn" data-choice-value="iau-najafabad-site" aria-pressed="false">وب‌سایت دانشگاه آزاد نجف‌آباد</html:button></html:div></html:div><html:div class="ay-choice-control ay-choice-category"><html:span class="field-label ay-choice-label" id="news-category-label">موضوع اطلاعیه *</html:span><html:input type="hidden" id="news-category" value="defense"/><html:div class="ay-choice-options" data-choice-for="news-category" role="group" aria-labelledby="news-category-label"><html:button type="button" class="ay-choice-btn" data-choice-value="defense" aria-pressed="true">پیش‌دفاع و دفاع</html:button><html:button type="button" class="ay-choice-btn" data-choice-value="regulation" aria-pressed="false">بخشنامه و شیوه‌نامه</html:button><html:button type="button" class="ay-choice-btn" data-choice-value="workshop" aria-pressed="false">کارگاه و رویداد</html:button><html:button type="button" class="ay-choice-btn" data-choice-value="call" aria-pressed="false">فراخوان پژوهشی</html:button><html:button type="button" class="ay-choice-btn" data-choice-value="other" aria-pressed="false">سایر</html:button></html:div></html:div></html:div>
+              <html:div class="news-two">
+                <html:div><html:label class="field-label" for="news-published">تاریخ انتشار شمسی (اختیاری)</html:label><html:input id="news-published" class="news-input" type="text" placeholder="1405/08/07"/></html:div>
+                <html:div><html:label class="field-label" for="news-deadline">مهلت اقدام شمسی (اختیاری)</html:label><html:input id="news-deadline" class="news-input" type="text" placeholder="1405/09/01"/></html:div>
+              </html:div>
+              <html:label class="field-label" for="news-excerpt">متن کوتاه / توضیح</html:label><html:textarea id="news-excerpt" class="news-input" rows="3" maxlength="2000" placeholder="خلاصه دقیق متن پیام اصلی؛ بدون حدس یا افزودن الزام جدید"></html:textarea>
+              <html:label class="field-label" for="news-link">پیوند اختصاصی پیام یا اطلاعیه (اختیاری)</html:label><html:input id="news-link" class="news-input" type="url" placeholder="https://..."/>
+              <html:div class="toolbar news-actions"><html:button id="news-save" class="action primary" type="button">ثبت اطلاعیه</html:button><html:button id="news-export" class="action secondary" type="button">دریافت پشتیبان JSON</html:button></html:div>
+              <html:p id="news-status" class="helper" role="status">هنوز اطلاعیه‌ای وارد نشده است.</html:p>
+            </html:section>
+            <html:section class="panel news-list-panel">
+              <html:h2>آرشیو اطلاعیه‌ها <html:span id="news-count" class="counter">۰</html:span></html:h2>
+              <html:div class="news-filters"><html:input id="news-search" class="news-input" type="search" placeholder="جست‌وجوی اطلاعیه‌ها..."/><html:div class="ay-choice-control ay-choice-filter"><html:span class="field-label ay-choice-label" id="news-filter-label">فیلتر آرشیو بر اساس موضوع</html:span><html:input type="hidden" id="news-filter" value="all"/><html:div class="ay-choice-options" data-choice-for="news-filter" role="group" aria-labelledby="news-filter-label"><html:button type="button" class="ay-choice-btn" data-choice-value="all" aria-pressed="true">همه موضوعات</html:button><html:button type="button" class="ay-choice-btn" data-choice-value="defense" aria-pressed="false">دفاع</html:button><html:button type="button" class="ay-choice-btn" data-choice-value="regulation" aria-pressed="false">بخشنامه</html:button><html:button type="button" class="ay-choice-btn" data-choice-value="workshop" aria-pressed="false">کارگاه</html:button><html:button type="button" class="ay-choice-btn" data-choice-value="call" aria-pressed="false">فراخوان</html:button><html:button type="button" class="ay-choice-btn" data-choice-value="other" aria-pressed="false">سایر</html:button></html:div></html:div></html:div>
+              <html:div id="news-results" class="news-results"><html:p class="helper">برای شروع، اولین اطلاعیه را ثبت کن.</html:p></html:div>
+            </html:section>
+            <html:section class="panel backup-panel" aria-labelledby="backup-title">
+              <html:div class="eyebrow">حفاظت از اطلاعات</html:div>
+              <html:h2 id="backup-title">پشتیبان‌گیری و بازیابی آرشیو</html:h2>
+              <html:p class="helper">فایل پشتیبان فقط حاوی اطلاعیه‌های ثبت‌شده و شناسه واحد نجف‌آباد است؛ هیچ خبر یا قانونی خودکار تأیید نمی‌شود. ابتدا فایل بررسی می‌شود و سپس با تأیید شما وارد خواهد شد.</html:p>
+              <html:div class="toolbar backup-toolbar"><html:button id="backup-choose" type="button" class="action secondary">انتخاب فایل JSON برای بازیابی</html:button><html:button id="backup-undo" type="button" class="action secondary">بازگشت آخرین بازیابی</html:button></html:div>
+              <html:div id="backup-preview" class="backup-preview" role="status">هنوز فایل پشتیبانی برای بازیابی انتخاب نشده است.</html:div>
+              <html:div class="backup-choices" id="backup-choices" hidden="hidden">
+                 <html:p class="field-label">روش بازیابی</html:p>
+                 <html:div class="backup-option-grid" role="group" aria-label="روش بازیابی">
+                  <html:button id="backup-merge" type="button" class="ay-choice-btn is-selected" aria-pressed="true">ادغام امن (پیشنهادی) · حفظ اطلاعیه‌های موجود</html:button>
+                  <html:button id="backup-replace" type="button" class="ay-choice-btn" aria-pressed="false">جایگزینی کامل · نیازمند تأیید</html:button>
+                 </html:div>
+                 <html:button id="backup-apply" type="button" class="action primary backup-apply" disabled="true">تأیید و انجام بازیابی</html:button>
+              </html:div>
+              <html:p id="backup-status" class="helper" role="status">برای بازیابی از نسخه ۰.۹.۳ یا جدیدتر می‌توانی فایل پشتیبان JSON انتخاب کنی.</html:p>
+            </html:section>
+          </html:div>
+          <html:div class="alert note">مهلت‌های ثبت‌شده صرفاً مطابق متن واردشده نمایش داده می‌شوند. برنامه اعتبار زمانی، تمدید یا لغو بخشنامه را به‌صورت خودکار تأیید نمی‌کند.</html:div>
+        </html:section>
+        <html:section id="page-deadlines" class="page">
+          <html:div class="eyebrow">پایش مهلت‌های پژوهشی</html:div>
+          <html:h1>مهلت‌ها و تقویم پژوهشی</html:h1>
+          <html:p class="lead">مهلت‌های ثبت‌شده در آرشیو اطلاعیه‌های خودت را با تاریخ شمسی و میلادی ببین، موارد نزدیک را شناسایی کن و به صورت iCalendar به تقویم شخصی منتقل کن.</html:p>
+          <html:div class="alert note">زمان‌بندی‌ها فقط از اطلاعیه‌های دستی کاربر می‌آیند و تغییر، تمدید یا لغو آن‌ها خودکار بررسی نمی‌شود. افزونه هنگام بسته‌بودن Zotero اعلان سیستمی ارسال نمی‌کند.</html:div>
+          <html:div class="stats deadlines-stats">
+            <html:div class="stat"><html:span>امروز و هفت روز آینده</html:span><html:strong id="deadline-stat-soon">۰</html:strong><html:small>نیازمند توجه کاربر</html:small></html:div>
+            <html:div class="stat"><html:span>مهلت‌های گذشته</html:span><html:strong id="deadline-stat-past">۰</html:strong><html:small>صرفاً براساس تاریخ واردشده</html:small></html:div>
+            <html:div class="stat"><html:span>تاریخ نامعتبر</html:span><html:strong id="deadline-stat-invalid">۰</html:strong><html:small>ممکن است از داده نسخه قدیمی باشد</html:small></html:div>
+          </html:div>
+          <html:div class="panel deadline-panel">
+            <html:div class="deadline-control-grid">
+              <html:div class="deadline-control-group">
+                <html:div class="deadline-control-title">فیلتر مهلت‌ها</html:div>
+                <html:div class="deadline-choice-group" id="deadline-filter-buttons" role="group" aria-label="فیلتر مهلت‌ها">
+                  <html:button type="button" class="deadline-chip active" data-deadline-filter="all" aria-pressed="true">همه</html:button>
+                  <html:button type="button" class="deadline-chip" data-deadline-filter="near" aria-pressed="false">۷ روز آینده</html:button>
+                  <html:button type="button" class="deadline-chip" data-deadline-filter="upcoming" aria-pressed="false">آینده</html:button>
+                  <html:button type="button" class="deadline-chip" data-deadline-filter="past" aria-pressed="false">گذشته</html:button>
+                  <html:button type="button" class="deadline-chip" data-deadline-filter="invalid" aria-pressed="false">تاریخ نامعتبر</html:button>
+                </html:div>
+              </html:div>
+              <html:div class="deadline-control-group">
+                <html:div class="deadline-control-title">زمان یادآوری فایل تقویم</html:div>
+                <html:div class="deadline-choice-group" id="deadline-reminder-buttons" role="group" aria-label="زمان یادآوری فایل تقویم">
+                  <html:button type="button" class="deadline-chip active" data-reminder-days="1" aria-pressed="true">۱ روز قبل</html:button>
+                  <html:button type="button" class="deadline-chip" data-reminder-days="3" aria-pressed="false">۳ روز قبل</html:button>
+                  <html:button type="button" class="deadline-chip" data-reminder-days="7" aria-pressed="false">۷ روز قبل</html:button>
+                  <html:button type="button" class="deadline-chip" data-reminder-days="0" aria-pressed="false">بدون یادآور</html:button>
+                </html:div>
+              </html:div>
+            </html:div>
+            <html:div class="deadline-actions">
+              <html:button id="deadline-ics-export" class="action primary" type="button">دریافت فایل تقویم ICS</html:button>
+              <html:button id="deadline-add-notice" class="action secondary" type="button">ثبت اطلاعیه و مهلت جدید</html:button>
+            </html:div>
+            <html:p id="deadlines-selection-status" class="deadline-feedback" role="status">فیلتر «همه» و یادآور «۱ روز قبل» انتخاب شده‌اند.</html:p>
+            <html:p id="deadlines-status" class="helper" role="status">اطلاعیه‌های دارای مهلت در حال بررسی‌اند.</html:p>
+            <html:p id="deadlines-export-status" class="deadline-feedback" role="status"></html:p>
+            <html:div id="deadlines-results" class="deadline-results"></html:div>
+          </html:div>
+          <html:p class="helper">رویدادهای ICS یک‌روزه و بدون ساعت مشخص‌اند. زمان اعلان در بعضی برنامه‌های تقویم به تنظیمات آن برنامه وابسته است. صدور فایل به معنی همگام‌سازی خودکار با تقویم نیست.</html:p>
+        </html:section>
+        <html:section id="page-researcher" class="page">
+          <html:div class="eyebrow">حساب پژوهشگر · ذخیره محلی</html:div><html:h1>پروفایل پژوهشگر</html:h1>
+          <html:p class="lead">نام کاربری Zotero بدون دریافت رمز، ایمیل یا دسترسی به Gmail خوانده می‌شود. نام نمایشی را خودت انتخاب و هر زمان خواستی تغییر بده.</html:p>
+          <html:div class="researcher-intro panel">
+            <html:div id="researcher-avatar-initial" class="researcher-avatar" aria-hidden="true">پ</html:div>
+            <html:div class="researcher-intro-copy"><html:div id="researcher-account-badge" class="researcher-account-badge"><html:span class="researcher-status-dot" aria-hidden="true"></html:span><html:span id="researcher-account-state">در حال بررسی حساب Zotero</html:span></html:div>
+              <html:h2 id="researcher-display-preview">پژوهشگر عزیز</html:h2><html:p>شناسه Zotero و نام نمایشی دو چیز متفاوت‌اند. این پروفایل صرفاً در همین دستگاه نگهداری می‌شود.</html:p>
+            </html:div>
+          </html:div>
+          <html:div class="researcher-columns">
+            <html:section class="panel" aria-label="اطلاعات حساب شناسایی‌شده">
+              <html:h2>حساب Zotero</html:h2>
+              <html:div class="researcher-fact"><html:span>نام کاربری</html:span><html:strong id="researcher-username" dir="auto">در حال بررسی…</html:strong></html:div>
+              <html:div class="researcher-fact"><html:span>شناسه کاربری</html:span><html:strong id="researcher-userid" dir="ltr">—</html:strong></html:div>
+              <html:p class="researcher-note">این اطلاعات فقط از حساب تنظیم‌شده در برنامه Zotero دریافت می‌شوند و نشان‌دهنده وضعیت اتصال زنده اینترنت یا موفقیت آخرین همگام‌سازی نیستند.</html:p>
+              <html:button id="researcher-refresh" class="action secondary" type="button">↻ خواندن دوباره از Zotero</html:button>
+            </html:section>
+            <html:section class="panel" aria-label="تنظیمات نام نمایشی پژوهشگر">
+              <html:h2>شخصی‌سازی آیین‌یار</html:h2>
+              <html:label class="researcher-label" for="researcher-display-name">نام نمایشی در آیین‌یار</html:label>
+              <html:input id="researcher-display-name" class="researcher-input" maxlength="80" autocomplete="off" placeholder="مثلاً: پژوهشگر عزیز"/>
+              <html:fieldset class="researcher-degree-fieldset">
+                <html:legend class="researcher-label" id="researcher-degree-label">مقطع تحصیلی</html:legend>
+                <html:div class="researcher-degree-grid">
+                  <html:label class="researcher-degree-option" for="researcher-degree-unspecified"><html:input id="researcher-degree-unspecified" type="radio" name="researcher-degree" value="unspecified" checked="checked"/><html:span>انتخاب نشده</html:span></html:label>
+                  <html:label class="researcher-degree-option" for="researcher-degree-masters"><html:input id="researcher-degree-masters" type="radio" name="researcher-degree" value="masters"/><html:span>کارشناسی ارشد</html:span></html:label>
+                  <html:label class="researcher-degree-option" for="researcher-degree-phd"><html:input id="researcher-degree-phd" type="radio" name="researcher-degree" value="phd"/><html:span>دکتری تخصصی</html:span></html:label>
+                  <html:label class="researcher-degree-option" for="researcher-degree-other"><html:input id="researcher-degree-other" type="radio" name="researcher-degree" value="other"/><html:span>سایر</html:span></html:label>
+                </html:div>
+              </html:fieldset>
+              <html:label class="researcher-label" for="researcher-affiliation">دانشگاه یا مؤسسه (اختیاری)</html:label>
+              <html:input id="researcher-affiliation" class="researcher-input" maxlength="120" autocomplete="off" placeholder="نام دانشگاه یا مرکز پژوهشی"/>
+              <html:label class="researcher-check"><html:input id="researcher-show-greeting" type="checkbox" checked="checked"/> نمایش خوشامدگویی شخصی در داشبورد</html:label>
+              <html:div class="researcher-buttons"><html:button id="researcher-save" class="action primary" type="button">ذخیره پروفایل</html:button><html:button id="researcher-clear" class="action secondary" type="button">پاک‌کردن تنظیمات شخصی</html:button></html:div>
+            </html:section>
+          </html:div>
+          <html:div class="researcher-privacy"><html:strong>حریم خصوصی:</html:strong> آیین‌یار برای این قابلیت هیچ درخواستی به Google، Gmail یا سرویس‌های خارجی نمی‌فرستد. نام نمایشی و تنظیمات شخصی فقط در ترجیحات محلی Zotero ذخیره می‌شوند. تغییر حساب Zotero باعث نمایش پروفایل مربوط به همان حساب می‌شود.</html:div>
+          <html:p id="researcher-status" class="helper researcher-status" role="status" aria-live="polite">در حال آماده‌سازی پروفایل…</html:p>
+        </html:section>
+        <html:section id="page-university" class="page"><html:div class="eyebrow">تنظیمات دانشگاه</html:div><html:h1>انتخاب واحد دانشگاهی</html:h1><html:p class="lead">ساختار سامانه از چند واحد پشتیبانی می‌کند؛ فعلاً فقط واحد نجف‌آباد فعال است.</html:p><html:div class="university-card"><html:div class="uni-logo-wrap"><html:img src="chrome://ayinyar-selector/content/assets/institution-academic-mark.png" alt="نماد مستقل آموزشی آیین‌یار"/></html:div><html:div><html:span class="available">● تنها واحد فعال</html:span><html:h2>دانشگاه آزاد اسلامی — واحد نجف‌آباد</html:h2><html:p class="muted">استان اصفهان · بسته مقررات: مرکزی + واحد نجف‌آباد</html:p><html:button id="save-unit" class="action primary">ثبت این واحد دانشگاهی</html:button><html:p id="unit-status" class="helper">تغییرات در تنظیمات محلی Zotero ذخیره خواهند شد.</html:p></html:div></html:div></html:section>
+        <html:section id="page-about" class="page"><html:div class="eyebrow">درباره محصول</html:div><html:h1>آیین‌یار پژوهش</html:h1><html:div class="panel about-card"><html:img src="chrome://ayinyar-selector/content/ayinyar-brand.png" alt="نشان آیین‌یار"/><html:div><html:h2>دستیار پژوهش و کنترل مستندات</html:h2><html:p>سازنده: <html:strong>محمدجواد شریفی</html:strong></html:p><html:p>دانشجوی دکتری تخصصی معماری، دانشگاه آزاد اسلامی واحد نجف‌آباد</html:p><html:p>پاییز ۱۴۰۵</html:p><html:div class="about-contact" aria-label="راه‌های ارتباطی سازنده">
+                    <html:div class="about-contact-row"><html:span class="about-contact-label">ایمیل</html:span><html:a class="about-contact-link" dir="ltr" href="mailto:pumortem@gmail.com">pumortem@gmail.com</html:a></html:div>
+                    <html:div class="about-contact-row"><html:span class="about-contact-label">وب‌سایت</html:span><html:a class="about-contact-link" dir="ltr" href="https://theavanstudio.ir/mohawwadjavad" target="_blank" rel="noopener noreferrer">theavanstudio.ir/mohawwadjavad</html:a></html:div>
+                  </html:div><html:p id="about-link-status" class="about-link-status" role="status" aria-live="polite"></html:p><html:p class="muted">نسخه ۰.۲۲.۰ · نمونه پژوهشی مستقل · بدون تأیید یا وابستگی رسمی به دانشگاه آزاد اسلامی</html:p></html:div></html:div><html:div class="alert note">قلم رابط آیین‌یار: Vazirmatn (وزیرمتن)، همراه بسته و قابل استفاده به‌صورت آفلاین. فایل فونت تحت مجوز مستقل SIL Open Font License 1.1 منتشر شده است.</html:div></html:section>
+      </html:main>
+    </html:div>
+  </html:div>
+  <html:script src="chrome://ayinyar-selector/content/bank.js"></html:script>
+  <html:script src="chrome://ayinyar-selector/content/validators.js"></html:script>
+  <html:script src="chrome://ayinyar-selector/content/reference-pro.js"></html:script>
+  <html:script src="chrome://ayinyar-selector/content/manual-rules.js"></html:script>
+  <html:script src="chrome://ayinyar-selector/content/file-dialog.js"></html:script>
+  <html:script src="chrome://ayinyar-selector/content/citation-audit.js"></html:script>
+  <html:script src="chrome://ayinyar-selector/content/bibliography-audit.js"></html:script>
+  <html:script src="chrome://ayinyar-selector/content/integrity-review.js"></html:script>
+  <html:script src="chrome://ayinyar-selector/content/preferences-store.js"></html:script>
+  <html:script src="chrome://ayinyar-selector/content/researcher-core.js"></html:script>
+  <html:script src="chrome://ayinyar-selector/content/news-center.js"></html:script>
+  <html:script src="chrome://ayinyar-selector/content/backup-manager.js"></html:script>
+  <html:script src="chrome://ayinyar-selector/content/deadline-calendar.js"></html:script>
+  <html:script src="chrome://ayinyar-selector/content/choice-controls.js"></html:script>
+  <html:script src="chrome://ayinyar-selector/content/paragraph-inspector.js"></html:script>
+  <html:script src="chrome://ayinyar-selector/content/compliance-engine.js"></html:script>
+  <html:script src="chrome://ayinyar-selector/content/pdf-images-local.js"></html:script>
+  <html:script src="chrome://ayinyar-selector/content/visual-page-scan.js"></html:script>
+  <html:script src="chrome://ayinyar-selector/content/visual-onnx-core.js"></html:script>
+  <html:script src="chrome://ayinyar-selector/content/visual-onnx.js"></html:script>
+  <html:script src="chrome://ayinyar-selector/content/visual-library.js"></html:script>
+  <html:script src="chrome://ayinyar-selector/content/pdf-crop-studio.js"></html:script>
+  <html:script src="chrome://ayinyar-selector/content/sidebar-navigation.js"></html:script>
+  <html:script src="chrome://ayinyar-selector/content/matrix-core.js"></html:script>
+  <html:script src="chrome://ayinyar-selector/content/app.js"></html:script>
+  <html:script src="chrome://ayinyar-selector/content/researcher-ui.js"></html:script>
+  <html:script src="chrome://ayinyar-selector/content/matrix-ui.js"></html:script>
+  <html:script src="chrome://ayinyar-selector/content/related-discovery.js"></html:script>
+  <html:script src="chrome://ayinyar-selector/content/ai-providers.js"></html:script>
+  <html:script src="chrome://ayinyar-selector/content/ai-local.js"></html:script>
+  <html:script src="chrome://ayinyar-selector/content/rag-core.js"></html:script>
+  <html:script src="chrome://ayinyar-selector/content/rag-ui.js"></html:script>
+  <html:script src="chrome://ayinyar-selector/content/matrix-ai-core.js"></html:script>
+  <html:script src="chrome://ayinyar-selector/content/matrix-ai.js"></html:script>
+  <html:script src="chrome://ayinyar-selector/content/matrix-batch-core.js"></html:script>
+  <html:script src="chrome://ayinyar-selector/content/matrix-batch.js"></html:script>
+</window>

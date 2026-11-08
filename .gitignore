@@ -1,0 +1,24 @@
+# Local secrets and credentials
+.env
+.env.*
+*.secret
+*api-key*
+*apikey*
+*token*
+
+# Local Zotero/profile data and temporary artifacts
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.log
+*.tmp
+*.bak
+__pycache__/
+node_modules/
+.venv/
+venv/
+.DS_Store
+Thumbs.db
+
+# Generated release artifacts
+dist/
