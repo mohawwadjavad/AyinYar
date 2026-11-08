@@ -33,7 +33,9 @@ def validate() -> tuple[str, dict]:
     zotero = manifest.get("applications", {}).get("zotero", {})
     check(zotero.get("strict_min_version") == "10.0", "Unexpected Zotero minimum version")
     check(zotero.get("strict_max_version") == "10.0.*", "Unexpected Zotero maximum version")
-    check("update_url" not in zotero, "A placeholder/unsupported update_url must not ship")
+    expected_update_url = "https://github.com/mohawwadjavad/AyinYar/releases/latest/download/updates.json"
+    check(zotero.get("update_url") == expected_update_url, "Zotero update_url must point to the stable latest-release updates.json")
+    check(manifest.get("homepage_url") == "https://github.com/mohawwadjavad/AyinYar", "Project homepage_url is missing or incorrect")
 
     required = [
         SRC / "bootstrap.js", SRC / "content/selector.xhtml", SRC / "content/game.xhtml",
@@ -170,6 +172,33 @@ def main():
         check("LICENSE" in names and "THIRD_PARTY_NOTICES.md" in names, "Project/third-party notices missing from XPI")
         check("content/assets/institution-academic-mark.png" in names, "Independent mark missing from XPI")
         check("content/iaun-logo.png" not in names, "Old university logo found in XPI")
+        xpi_manifest = json.loads(zf.read("manifest.json").decode("utf-8"))
+        xpi_zotero = xpi_manifest.get("applications", {}).get("zotero", {})
+        check(xpi_zotero.get("update_url") == expected_update_url, "Required Zotero update_url missing from built XPI")
+
+    # Publish a Mozilla-style update manifest alongside every release.
+    addon_id = zotero["id"]
+    updates_manifest = {
+        "addons": {
+            addon_id: {
+                "updates": [{
+                    "version": VERSION,
+                    "update_link": f"https://github.com/mohawwadjavad/AyinYar/releases/download/v{VERSION}/{xpi.name}",
+                    "update_hash": f"sha256:{sha256(xpi)}",
+                    "applications": {
+                        "zotero": {
+                            "strict_min_version": "10.0",
+                            "strict_max_version": "10.0.*"
+                        }
+                    }
+                }]
+            }
+        }
+    }
+    updates_path = DIST / "updates.json"
+    updates_path.write_text(json.dumps(updates_manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    parsed_updates = json.loads(updates_path.read_text("utf-8"))
+    check(addon_id in parsed_updates.get("addons", {}), "Generated updates.json is missing the add-on ID")
 
     with zipfile.ZipFile(source_zip, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as zf:
         zip_add_tree(zf, ROOT, Path(f"AyinYar_v{VERSION}"))
@@ -179,9 +208,10 @@ def main():
     with zipfile.ZipFile(complete_zip, "w", compression=zipfile.ZIP_DEFLATED, compresslevel=9) as zf:
         zip_add_tree(zf, ROOT, Path(f"AyinYar_v{VERSION}"))
         zf.write(xpi, Path(f"AyinYar_v{VERSION}") / "release" / xpi.name)
+        zf.write(updates_path, Path(f"AyinYar_v{VERSION}") / "release" / "updates.json")
 
     sums = []
-    for path in (xpi, source_zip, complete_zip):
+    for path in (xpi, source_zip, complete_zip, updates_path):
         sums.append(f"{sha256(path)}  {path.name}")
     (DIST / "SHA256SUMS.txt").write_text("\n".join(sums) + "\n", encoding="utf-8")
     build_manifest = {
@@ -189,11 +219,11 @@ def main():
         "zotero": {"min": "10.0", "max": "10.0.*"},
         "license": "All Rights Reserved (project code and original assets); Vazirmatn font is SIL OFL 1.1",
         "qa": qa,
-        "artifacts": [{"name": p.name, "bytes": p.stat().st_size, "sha256": sha256(p)} for p in (xpi, source_zip, complete_zip)],
+        "artifacts": [{"name": p.name, "bytes": p.stat().st_size, "sha256": sha256(p)} for p in (xpi, source_zip, complete_zip, updates_path)],
     }
     (DIST / "BUILD_MANIFEST.json").write_text(json.dumps(build_manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print("Release artifacts:")
-    for path in (xpi, source_zip, complete_zip, DIST / "SHA256SUMS.txt", DIST / "BUILD_MANIFEST.json"):
+    for path in (xpi, source_zip, complete_zip, updates_path, DIST / "SHA256SUMS.txt", DIST / "BUILD_MANIFEST.json"):
         print(f"- {path.relative_to(ROOT)} ({path.stat().st_size:,} bytes)")
 
 
