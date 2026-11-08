@@ -35,6 +35,6 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release create "$GITHUB_REF_NAME" \
-            dist/*.xpi dist/*.zip dist/SHA256SUMS.txt dist/BUILD_MANIFEST.json \
+            dist/*.xpi dist/*.zip dist/updates.json dist/SHA256SUMS.txt dist/BUILD_MANIFEST.json \
             --title "AyinYar Research $GITHUB_REF_NAME" \
             --notes-file CHANGELOG_FA.md
