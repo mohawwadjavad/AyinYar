@@ -53,6 +53,33 @@ async function localRequest(method,path,body){if(!['/api/tags','/api/chat'].incl
  if(method==='POST'&&path==='/api/chat'){opts.headers['Content-Type']='application/json';opts.body=JSON.stringify(body);}else if(method!=='GET'||path!=='/api/tags')throw new Error('روش درخواست مجاز نیست.');
  return parseJSON(await http.request(method,HOST+path,opts));}
 function getCloudKey(){return String($('ai-online-key')?.value||'').trim();}
+const PROVIDER_KEY_URLS=Object.freeze({gemini:'https://aistudio.google.com/api-keys',openrouter:'https://openrouter.ai/settings/keys'});
+function syncProviderKeyHelp(){
+ const link=$('ai-key-link');if(!link)return;
+ const valid=Object.prototype.hasOwnProperty.call(PROVIDER_KEY_URLS,provider);
+ if(!valid){link.hidden=true;return;}
+ link.hidden=false;link.setAttribute('href',PROVIDER_KEY_URLS[provider]);
+ link.textContent=provider==='gemini'?'دریافت کلید Gemini ↗':'دریافت کلید OpenRouter ↗';
+ const g=$('ai-guide-gemini'),o=$('ai-guide-openrouter');
+ if(g)g.hidden=provider!=='gemini';if(o)o.hidden=provider!=='openrouter';
+ status('ai-key-link-status','برای دریافت کلید '+(provider==='gemini'?'Gemini':'OpenRouter')+' از لینک رسمی کنار کادر استفاده کن.');
+}
+function openProviderKeySite(event){
+ const url=PROVIDER_KEY_URLS[provider];if(!url||!event?.isTrusted&&event?.isTrusted!==undefined)return;
+ if(root.AYINYAR_DEMO)return; // Browser preview uses normal anchor navigation.
+ event.preventDefault();
+ const message=$('ai-key-link-status');
+ try{
+  const zotero=z();if(zotero&&typeof zotero.launchURL==='function'){
+   zotero.launchURL(url);if(message)message.textContent='درخواست بازکردن صفحه رسمی دریافت کلید در مرورگر ارسال شد.';return;
+  }
+ }catch(_){}
+ try{
+  const bridge=root.arguments?.[0]?.ayinyarOpenExternalURL;
+  if(typeof bridge==='function'){bridge(url);if(message)message.textContent='صفحه رسمی دریافت کلید در مرورگر پیش‌فرض باز می‌شود.';return;}
+ }catch(_){}
+ if(message)message.textContent='بازکردن خودکار ممکن نشد. نشانی را در مرورگر وارد کن: '+url;
+}
 function activeModel(){return provider==='ollama'?chosen:(provider==='gemini'?cloudModel:'openrouter/free');}
 function setProvider(next){
  if(busy||!Cloud?.validProvider(next))return;
@@ -65,6 +92,7 @@ function setProvider(next){
  $('ai-answer').textContent='';$('ai-evidence').textContent='';
  $('ai-online-panel').hidden=provider==='ollama';
  $('ai-local-panel').hidden=provider!=='ollama';
+ syncProviderKeyHelp();
  $('ai-check').textContent=provider==='ollama'?'بررسی اتصال Ollama و مدل‌ها':'بررسی تنظیمات موتور آنلاین';
  const labels={ollama:'با ارسال متن، پرسش و پیام‌های همین نشست به Ollama روی رایانه خودم موافقم؛ خروجی را بررسی می‌کنم.',gemini:'با ارسال متن، پرسش و پیام‌های همین نشست به Google Gemini موافقم؛ می‌دانم محتوای سطح رایگان ممکن است برای بهبود محصولات استفاده شود.',openrouter:'با ارسال متن، پرسش و پیام‌های همین نشست به OpenRouter و ارائه‌دهنده مدل رایگان منتخب موافقم؛ شرایط حفظ داده را می‌پذیرم.'};
  $('ai-consent-text').textContent=labels[provider];
@@ -163,6 +191,6 @@ async function sendChat(){
  }catch(e){status('ai-chat-status','دریافت پاسخ ناموفق بود: '+text(e.message,290));}
  finally{busy=false;$('ai-chat-send').disabled=false;$('ai-analyze').disabled=false;}
 }
-function init(){if(!$('ai-check'))return;document.querySelectorAll('[data-ai-provider]').forEach(b=>b.addEventListener('click',()=>setProvider(b.dataset.aiProvider)));setProvider('ollama');$('ai-check').addEventListener('click',check);$('ai-pick').addEventListener('click',readSource);$('ai-analyze').addEventListener('click',analyze);$('ai-save-note').addEventListener('click',save);$('ai-chat-send').addEventListener('click',sendChat);$('ai-chat-clear').addEventListener('click',clearChat);document.querySelectorAll('[data-ai-mode]').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.aiMode;document.querySelectorAll('[data-ai-mode]').forEach(x=>{let on=x.dataset.aiMode===mode;x.classList.toggle('is-selected',on);x.setAttribute('aria-pressed',String(on));});}));if(root.AYINYAR_DEMO)readSource();}
+function init(){if(!$('ai-check'))return;document.querySelectorAll('[data-ai-provider]').forEach(b=>b.addEventListener('click',()=>setProvider(b.dataset.aiProvider)));$('ai-key-link')?.addEventListener('click',openProviderKeySite);setProvider('ollama');$('ai-check').addEventListener('click',check);$('ai-pick').addEventListener('click',readSource);$('ai-analyze').addEventListener('click',analyze);$('ai-save-note').addEventListener('click',save);$('ai-chat-send').addEventListener('click',sendChat);$('ai-chat-clear').addEventListener('click',clearChat);document.querySelectorAll('[data-ai-mode]').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.aiMode;document.querySelectorAll('[data-ai-mode]').forEach(x=>{let on=x.dataset.aiMode===mode;x.classList.toggle('is-selected',on);x.setAttribute('aria-pressed',String(on));});}));if(root.AYINYAR_DEMO)readSource();}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })(typeof window==='undefined'?globalThis:window);
