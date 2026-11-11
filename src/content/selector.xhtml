@@ -331,7 +331,33 @@
             </html:div>
             <html:div id="ai-online-panel" class="ai-online-panel" hidden="hidden">
               <html:p class="ai-online-warning" id="ai-privacy-warning">در حالت آنلاین، متن انتخابی به ارائه‌دهنده ارسال می‌شود. شرایط نگهداری داده و محدودیت سهمیه سرویس را بررسی کن؛ داده حساس را ارسال نکن.</html:p>
-              <html:label class="ai-label">کلید API اختصاصی (فقط در حافظه همین پنجره؛ ذخیره نمی‌شود)<html:input id="ai-online-key" type="password" maxlength="512" autocomplete="off" spellcheck="false" placeholder="کلید API را اینجا وارد کن"/></html:label>
+              <html:label class="ai-label" for="ai-online-key">کلید API اختصاصی (فقط در حافظه همین پنجره؛ ذخیره نمی‌شود)</html:label>
+              <html:div class="ai-key-input-row"><html:input id="ai-online-key" type="password" maxlength="512" autocomplete="off" spellcheck="false" placeholder="کلید API را اینجا وارد کن" aria-describedby="ai-key-link-status"/><html:a id="ai-key-link" class="ai-key-link" href="https://aistudio.google.com/api-keys" target="_blank" rel="noopener noreferrer">دریافت کلید Gemini ↗</html:a></html:div>
+              <html:p id="ai-key-link-status" class="ai-key-link-status helper" role="status" aria-live="polite">از لینک کنار کادر، صفحه رسمی دریافت کلید را باز کن.</html:p>
+              <html:details id="ai-key-guide" class="ai-help-guide">
+                <html:summary>راهنمای گام‌به‌گام دریافت و فعال‌سازی API در آیین‌یار</html:summary>
+                <html:div id="ai-guide-gemini" class="ai-guide-section">
+                  <html:h3>فعالسازی Google Gemini</html:h3>
+                  <html:ol>
+                    <html:li>روی «دریافت کلید Gemini» کنار کادر بالا کلیک کن و با حساب Google وارد Google AI Studio شو.</html:li>
+                    <html:li>وارد API Keys شو؛ «Create API key» را انتخاب کن. اگر لازم بود از بخش Projects یک پروژه بساز یا پروژه موجود را انتخاب کن.</html:li>
+                    <html:li>کلید را کپی کن، به آیین‌یار برگرد و در فیلد بالا وارد کن. یکی از مدل‌های نمایش‌داده‌شده را انتخاب کن.</html:li>
+                    <html:li>متن یا چکیده عمومی را وارد کن، رضایت ارسال آنلاین را فعال کن و «تحلیل با مدل انتخاب‌شده» را بزن.</html:li>
+                  </html:ol>
+                  <html:p>اگر کلید ساخته نشد، مجوز ساخت کلید در پروژه Google Cloud را بررسی کن. سهمیه و دسترسی مدل‌ها ممکن است تغییر کنند.</html:p>
+                </html:div>
+                <html:div id="ai-guide-openrouter" class="ai-guide-section" hidden="hidden">
+                  <html:h3>فعالسازی OpenRouter</html:h3>
+                  <html:ol>
+                    <html:li>روی «دریافت کلید OpenRouter» کنار کادر بالا کلیک کن و در حساب OpenRouter وارد شو یا ثبت‌نام کن.</html:li>
+                    <html:li>در صفحه Keys روی «Create Key» کلیک کن، در صورت تمایل نامی برای کلید بگذار و کلید را کپی کن.</html:li>
+                    <html:li>کلید را در فیلد بالا وارد کن. آیین‌یار مسیر مدل رایگان <html:code dir="ltr">openrouter/free</html:code> را انتخاب می‌کند.</html:li>
+                    <html:li>یک متن عمومی وارد کن، رضایت ارسال آنلاین را فعال کن و اولین تحلیل را انجام بده.</html:li>
+                  </html:ol>
+                  <html:p>مدل رایگان ممکن است موقتاً شلوغ یا ناموجود باشد؛ هیچ سهمیه نامحدودی تضمین نمی‌شود.</html:p>
+                </html:div>
+                <html:p class="ai-help-caution">کلید را برای هیچ‌کس نفرست. خطای 401/403 معمولاً مربوط به اعتبار کلید یا دسترسی است؛ 429 نشان‌دهنده محدودیت درخواست یا سهمیه است. «بررسی تنظیمات آنلاین» اعتبار کلید را در سرور نمی‌سنجد؛ اولین تحلیل واقعی آن را امتحان می‌کند.</html:p>
+              </html:details>
               <html:div id="ai-online-models" class="ai-model-list" role="group" aria-label="مدل‌های مجاز رایگان"></html:div>
               <html:p class="helper">Gemini: کلید از Google AI Studio · OpenRouter: کلید از حساب OpenRouter. فقط مدل‌های دارای سهمیه رایگان در این پنل نمایش داده می‌شوند؛ مدل پولی به‌طور خودکار فعال نمی‌شود. اگر پروژه یا کلیدت به حساب دارای صورت‌حساب متصل باشد، هزینه‌ احتمالی به شرایط همان حساب بستگی دارد. سهمیه‌ها ممکن است تغییر کنند.</html:p>
             </html:div>

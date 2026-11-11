@@ -28,6 +28,8 @@ jobs:
         run: python scripts/build_release.py --validate-only
       - name: Run mocked runtime tests
         run: python tests/test_runtime_bridges.py
+      - name: Test API onboarding and provider links
+        run: python tests/test_ai_onboarding.py
       - name: Build release files
         run: python scripts/build_release.py
       - name: Create GitHub Release and upload assets

@@ -450,3 +450,20 @@
 /* v0.22.0 — feedback for external contact links in Zotero's chrome dialog. */
 .about-link-status{min-height:0;margin:5px 0 0;color:#28617d;font-size:12px;line-height:1.8;overflow-wrap:anywhere}
 .about-link-status:empty{display:none}
+
+/* v0.22.2: accessible onboarding for cloud API credentials. */
+.ai-key-input-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:8px 0 0}
+.ai-key-input-row input{flex:1 1 260px;min-width:0;max-width:650px;direction:ltr;text-align:left;min-height:44px}
+.ai-key-link{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:9px 14px;border-radius:10px;background:#e1f5f5;border:1px solid #9bcbd1;color:#125773;font-weight:750;text-decoration:none;white-space:normal;text-align:center}
+.ai-key-link:hover{background:#ccecf0;color:#0d4359}
+.ai-key-link:focus-visible{outline:3px solid #e2a63d;outline-offset:2px}
+.ai-key-link-status{margin-top:5px!important}
+.ai-help-guide{margin:12px 0;background:#fff;border:1px solid #bed7e7;border-radius:13px;padding:3px 14px;color:#244a63}
+.ai-help-guide summary{list-style-position:inside;cursor:pointer;font-weight:800;line-height:2.1;padding:9px 0;outline-offset:3px}
+.ai-help-guide summary:focus-visible{outline:2px solid #146e8c}
+.ai-help-guide h3{font-size:15px;margin:12px 0 8px}
+.ai-guide-section{line-height:2.1;font-size:13px}
+.ai-guide-section ol{margin:0;padding-inline-start:26px}
+.ai-guide-section li{margin-bottom:7px}
+.ai-help-caution{font-size:12px;line-height:2.05;border-top:1px solid #e2edf3;padding-top:10px;color:#6b4d2c}
+@media(max-width:560px){.ai-key-input-row{flex-direction:column;align-items:stretch}.ai-key-input-row input{width:100%;flex:none}.ai-key-link{width:100%}}
