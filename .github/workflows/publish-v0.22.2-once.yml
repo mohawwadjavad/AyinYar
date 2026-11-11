@@ -1,0 +1,52 @@
+name: Publish AyinYar v0.22.2 (one-time)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/publish-v0.22.2-once.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out verified v0.22.2 source
+        uses: actions/checkout@v4
+        with:
+          ref: ac04fc418878264172b7ed5dcbad70f629430263
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install validators
+        run: python -m pip install tinycss2 fonttools
+      - name: Validate source
+        run: python scripts/build_release.py --validate-only
+      - name: Run regression tests
+        run: |
+          python tests/test_runtime_bridges.py
+          python tests/test_ai_onboarding.py
+      - name: Build distributable files
+        run: python scripts/build_release.py
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view "v0.22.2" >/dev/null 2>&1; then
+            echo "v0.22.2 is already published"
+            exit 0
+          fi
+          gh release create "v0.22.2" \
+            dist/*.xpi dist/*.zip dist/updates.json dist/SHA256SUMS.txt dist/BUILD_MANIFEST.json \
+            --target ac04fc418878264172b7ed5dcbad70f629430263 \
+            --title "AyinYar Research v0.22.2" \
+            --notes-file CHANGELOG_FA.md \
+            --latest
