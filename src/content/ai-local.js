@@ -64,6 +64,8 @@ function setProvider(next){
  $('ai-consent').checked=false;
  $('ai-answer').textContent='';$('ai-evidence').textContent='';
  $('ai-online-panel').hidden=provider==='ollama';
+ document.querySelectorAll('[data-ai-help-provider]').forEach(el=>{el.hidden=el.dataset.aiHelpProvider!==provider;});
+ status('ai-key-link-status','');
  $('ai-local-panel').hidden=provider!=='ollama';
  $('ai-check').textContent=provider==='ollama'?'بررسی اتصال Ollama و مدل‌ها':'بررسی تنظیمات موتور آنلاین';
  const labels={ollama:'با ارسال متن، پرسش و پیام‌های همین نشست به Ollama روی رایانه خودم موافقم؛ خروجی را بررسی می‌کنم.',gemini:'با ارسال متن، پرسش و پیام‌های همین نشست به Google Gemini موافقم؛ می‌دانم محتوای سطح رایگان ممکن است برای بهبود محصولات استفاده شود.',openrouter:'با ارسال متن، پرسش و پیام‌های همین نشست به OpenRouter و ارائه‌دهنده مدل رایگان منتخب موافقم؛ شرایط حفظ داده را می‌پذیرم.'};
@@ -163,6 +165,22 @@ async function sendChat(){
  }catch(e){status('ai-chat-status','دریافت پاسخ ناموفق بود: '+text(e.message,290));}
  finally{busy=false;$('ai-chat-send').disabled=false;$('ai-analyze').disabled=false;}
 }
-function init(){if(!$('ai-check'))return;document.querySelectorAll('[data-ai-provider]').forEach(b=>b.addEventListener('click',()=>setProvider(b.dataset.aiProvider)));setProvider('ollama');$('ai-check').addEventListener('click',check);$('ai-pick').addEventListener('click',readSource);$('ai-analyze').addEventListener('click',analyze);$('ai-save-note').addEventListener('click',save);$('ai-chat-send').addEventListener('click',sendChat);$('ai-chat-clear').addEventListener('click',clearChat);document.querySelectorAll('[data-ai-mode]').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.aiMode;document.querySelectorAll('[data-ai-mode]').forEach(x=>{let on=x.dataset.aiMode===mode;x.classList.toggle('is-selected',on);x.setAttribute('aria-pressed',String(on));});}));if(root.AYINYAR_DEMO)readSource();}
+function openKeyCreationPage(event){
+ const link=event.currentTarget;
+ const destinations={gemini:'https://aistudio.google.com/apikey',openrouter:'https://openrouter.ai/settings/keys'};
+ const url=destinations[link.dataset.aiKeyLink];
+ if(!url||link.getAttribute('href')!==url||root.AYINYAR_DEMO)return;
+ event.preventDefault();
+ try{
+  const zotero=z();
+  if(typeof zotero?.launchURL==='function'){zotero.launchURL(url);status('ai-key-link-status','صفحهٔ رسمی دریافت کلید در مرورگر پیش‌فرض درخواست شد.');return;}
+ }catch(_){/* Try existing bootstrapped Zotero external-protocol bridge. */}
+ try{
+  const bridge=root.arguments?.[0]?.ayinyarOpenExternalURL;
+  if(typeof bridge==='function'){bridge(url);status('ai-key-link-status','صفحهٔ رسمی دریافت کلید در مرورگر پیش‌فرض درخواست شد.');return;}
+ }catch(_){/* Fall through to copyable URL in status. */}
+ status('ai-key-link-status','بازکردن خودکار ممکن نشد. این نشانی را در مرورگر باز کن: '+url);
+}
+function init(){if(!$('ai-check'))return;document.querySelectorAll('[data-ai-provider]').forEach(b=>b.addEventListener('click',()=>setProvider(b.dataset.aiProvider)));document.querySelectorAll('[data-ai-key-link]').forEach(a=>a.addEventListener('click',openKeyCreationPage));setProvider('ollama');$('ai-check').addEventListener('click',check);$('ai-pick').addEventListener('click',readSource);$('ai-analyze').addEventListener('click',analyze);$('ai-save-note').addEventListener('click',save);$('ai-chat-send').addEventListener('click',sendChat);$('ai-chat-clear').addEventListener('click',clearChat);document.querySelectorAll('[data-ai-mode]').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.aiMode;document.querySelectorAll('[data-ai-mode]').forEach(x=>{let on=x.dataset.aiMode===mode;x.classList.toggle('is-selected',on);x.setAttribute('aria-pressed',String(on));});}));if(root.AYINYAR_DEMO)readSource();}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })(typeof window==='undefined'?globalThis:window);

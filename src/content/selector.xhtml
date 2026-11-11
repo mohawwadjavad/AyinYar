@@ -48,11 +48,11 @@
       <html:div class="sidebar-footer">
         <html:button type="button" class="nav-btn nav-footer-link nav-researcher" data-page="researcher"><html:span class="nav-icon" aria-hidden="true">◉</html:span><html:span class="nav-label">پروفایل پژوهشگر</html:span></html:button>
         <html:button type="button" class="nav-btn nav-footer-link" data-page="about"><html:span class="nav-icon" aria-hidden="true">ⓘ</html:span><html:span class="nav-label">درباره افزونه</html:span></html:button>
-        <html:div class="sidebar-bottom"><html:span class="dot"></html:span> آفلاین + جست‌وجوی رایگان آنلاین<html:small>نسخه ۰.۲۲.۰</html:small></html:div>
+        <html:div class="sidebar-bottom"><html:span class="dot"></html:span> آفلاین + جست‌وجوی رایگان آنلاین<html:small>نسخه ۰.۲۲.۲</html:small></html:div>
       </html:div>
     </html:aside>
     <html:div class="workspace">
-      <html:header class="topbar"><html:div id="top-title">داشبورد پژوهشی</html:div><html:div class="top-right"><html:span class="top-pill">دانشگاه آزاد · نجف‌آباد</html:span><html:span class="version">v0.22.0</html:span></html:div></html:header>
+      <html:header class="topbar"><html:div id="top-title">داشبورد پژوهشی</html:div><html:div class="top-right"><html:span class="top-pill">دانشگاه آزاد · نجف‌آباد</html:span><html:span class="version">v0.22.2</html:span></html:div></html:header>
       <html:main class="page-container">
         <html:section id="page-dashboard" class="page active"><html:div class="eyebrow">مرکز کنترل پژوهش</html:div><html:h1>مسیر پژوهش، منظم و مستند.</html:h1><html:p class="lead">مرور وضعیت منابع، فایل Word و بسته مقررات دانشگاهی در یک محیط فارسی. این نسخه ارزیابی رسمی دانشگاه نیست.</html:p>
           <html:div class="researcher-welcome" aria-label="خوشامدگویی پژوهشگر"><html:div class="researcher-welcome-symbol" aria-hidden="true">✦</html:div><html:div class="researcher-welcome-text"><html:h2 id="researcher-dashboard-greeting">به آیین‌یار پژوهش خوش آمدی.</html:h2><html:p id="researcher-dashboard-detail">نام پژوهشگر از تنظیمات محلی یا حساب Zotero دریافت می‌شود.</html:p></html:div><html:button type="button" class="action secondary" data-go="researcher">ویرایش پروفایل ←</html:button></html:div>
@@ -319,7 +319,7 @@
         </html:section>
 
         <html:section id="page-ai-local" class="page">
-          <html:div class="eyebrow">AyinYar AI Hub · Offline + Online Free Tier · 0.22.0</html:div>
+          <html:div class="eyebrow">AyinYar AI Hub · Offline + Online Free Tier · 0.22.2</html:div>
           <html:h1>دستیار هوش مصنوعی آیین‌یار</html:h1>
           <html:p class="lead">عنوان و چکیده منبع را به فارسی تحلیل کن. بدون نصب Ollama هم می‌توانی با کلید API رایگان خودت از Gemini یا OpenRouter استفاده کنی. این صفحه هنوز استخراج متن کامل PDF یا ارجاع صفحه‌ای ندارد.</html:p>
           <html:div class="panel ai-panel">
@@ -332,6 +332,35 @@
             <html:div id="ai-online-panel" class="ai-online-panel" hidden="hidden">
               <html:p class="ai-online-warning" id="ai-privacy-warning">در حالت آنلاین، متن انتخابی به ارائه‌دهنده ارسال می‌شود. شرایط نگهداری داده و محدودیت سهمیه سرویس را بررسی کن؛ داده حساس را ارسال نکن.</html:p>
               <html:label class="ai-label">کلید API اختصاصی (فقط در حافظه همین پنجره؛ ذخیره نمی‌شود)<html:input id="ai-online-key" type="password" maxlength="512" autocomplete="off" spellcheck="false" placeholder="کلید API را اینجا وارد کن"/></html:label>
+              <html:div class="ai-api-guide" aria-label="راهنمای فعال‌سازی کلید API">
+                <html:div class="ai-provider-help" data-ai-help-provider="gemini" hidden="hidden">
+                  <html:div class="ai-api-guide-top"><html:strong>کلید Gemini نداری؟</html:strong><html:a class="ai-api-official-link" data-ai-key-link="gemini" href="https://aistudio.google.com/apikey" target="_blank" rel="noopener noreferrer">دریافت کلید Gemini از Google AI Studio ↗</html:a></html:div>
+                  <html:details class="ai-api-guide-details"><html:summary>راهنمای فارسیِ گام‌به‌گام ساخت کلید Gemini</html:summary>
+                    <html:ol>
+                      <html:li>روی دکمهٔ «دریافت کلید Gemini» بزن و در مرورگر با حساب Google وارد شو.</html:li>
+                      <html:li>در صفحهٔ API keys، کلید موجود را پیدا کن یا «Create API key» را بزن. اگر لازم بود پروژه را انتخاب یا ایجاد کن.</html:li>
+                      <html:li>کلید را Copy کن و در کادر «کلید API اختصاصی» همین صفحه Paste کن؛ رمز حساب گوگل را وارد نکن.</html:li>
+                      <html:li>از فهرست زیر یک مدل Gemini انتخاب کن. سپس در بخش بعدی متن یا چکیده را وارد کن، رضایت را فعال کن و تحلیل را اجرا کن.</html:li>
+                    </html:ol>
+                    <html:p>ساخت کلید لزوماً به معنی فعال‌بودن مدل یا سهمیهٔ رایگان نیست. اگر برای استفادهٔ رایگان اقدام می‌کنی، از فعال‌کردن Billing بدون بررسی هزینه‌ها خودداری کن. متن حساس را آنلاین ارسال نکن.</html:p>
+                    <html:p>راهنمای کامل‌تر در فایل «راهنمای فعال کردن هوش مصنوعی افزونه.txt» داخل بستهٔ دانلودی قرار دارد.</html:p>
+                  </html:details>
+                </html:div>
+                <html:div class="ai-provider-help" data-ai-help-provider="openrouter" hidden="hidden">
+                  <html:div class="ai-api-guide-top"><html:strong>کلید OpenRouter نداری؟</html:strong><html:a class="ai-api-official-link" data-ai-key-link="openrouter" href="https://openrouter.ai/settings/keys" target="_blank" rel="noopener noreferrer">دریافت کلید OpenRouter ↗</html:a></html:div>
+                  <html:details class="ai-api-guide-details"><html:summary>راهنمای فارسیِ گام‌به‌گام ساخت کلید OpenRouter</html:summary>
+                    <html:ol>
+                      <html:li>روی «دریافت کلید OpenRouter» بزن و در مرورگر ثبت‌نام یا وارد حساب خود شو.</html:li>
+                      <html:li>در بخش API Keys، گزینهٔ «Create Key» را بزن، نامی مثل AyinYar وارد کن و کلید را بساز.</html:li>
+                      <html:li>کلید را همان موقع Copy کن؛ ممکن است فقط یک‌بار نمایش داده شود. سپس آن را در کادر بالای این راهنما Paste کن.</html:li>
+                      <html:li>مدل «openrouter/free» را انتخاب کن. پس از واردکردن متن، با بررسی هشدار حریم خصوصی و فعال‌کردن رضایت، تحلیل را اجرا کن.</html:li>
+                    </html:ol>
+                    <html:p>مدل رایگان سهمیه و محدودیت سرعت دارد و ممکن است بین درخواست‌ها تغییر کند؛ کلید را با دیگران به اشتراک نگذار. آیین‌یار برای این سرویس مدل پولی انتخاب نمی‌کند.</html:p>
+                    <html:p>راهنمای کامل‌تر در فایل «راهنمای فعال کردن هوش مصنوعی افزونه.txt» داخل بستهٔ دانلودی قرار دارد.</html:p>
+                  </html:details>
+                </html:div>
+                <html:p id="ai-key-link-status" class="ai-key-link-status" role="status" aria-live="polite"></html:p>
+              </html:div>
               <html:div id="ai-online-models" class="ai-model-list" role="group" aria-label="مدل‌های مجاز رایگان"></html:div>
               <html:p class="helper">Gemini: کلید از Google AI Studio · OpenRouter: کلید از حساب OpenRouter. فقط مدل‌های دارای سهمیه رایگان در این پنل نمایش داده می‌شوند؛ مدل پولی به‌طور خودکار فعال نمی‌شود. اگر پروژه یا کلیدت به حساب دارای صورت‌حساب متصل باشد، هزینه‌ احتمالی به شرایط همان حساب بستگی دارد. سهمیه‌ها ممکن است تغییر کنند.</html:p>
             </html:div>
@@ -598,7 +627,7 @@
         <html:section id="page-about" class="page"><html:div class="eyebrow">درباره محصول</html:div><html:h1>آیین‌یار پژوهش</html:h1><html:div class="panel about-card"><html:img src="chrome://ayinyar-selector/content/ayinyar-brand.png" alt="نشان آیین‌یار"/><html:div><html:h2>دستیار پژوهش و کنترل مستندات</html:h2><html:p>سازنده: <html:strong>محمدجواد شریفی</html:strong></html:p><html:p>دانشجوی دکتری تخصصی معماری، دانشگاه آزاد اسلامی واحد نجف‌آباد</html:p><html:p>پاییز ۱۴۰۵</html:p><html:div class="about-contact" aria-label="راه‌های ارتباطی سازنده">
                     <html:div class="about-contact-row"><html:span class="about-contact-label">ایمیل</html:span><html:a class="about-contact-link" dir="ltr" href="mailto:pumortem@gmail.com">pumortem@gmail.com</html:a></html:div>
                     <html:div class="about-contact-row"><html:span class="about-contact-label">وب‌سایت</html:span><html:a class="about-contact-link" dir="ltr" href="https://theavanstudio.ir/mohawwadjavad" target="_blank" rel="noopener noreferrer">theavanstudio.ir/mohawwadjavad</html:a></html:div>
-                  </html:div><html:p id="about-link-status" class="about-link-status" role="status" aria-live="polite"></html:p><html:p class="muted">نسخه ۰.۲۲.۰ · نمونه پژوهشی مستقل · بدون تأیید یا وابستگی رسمی به دانشگاه آزاد اسلامی</html:p></html:div></html:div><html:div class="alert note">قلم رابط آیین‌یار: Vazirmatn (وزیرمتن)، همراه بسته و قابل استفاده به‌صورت آفلاین. فایل فونت تحت مجوز مستقل SIL Open Font License 1.1 منتشر شده است.</html:div></html:section>
+                  </html:div><html:p id="about-link-status" class="about-link-status" role="status" aria-live="polite"></html:p><html:p class="muted">نسخه ۰.۲۲.۲ · نمونه پژوهشی مستقل · بدون تأیید یا وابستگی رسمی به دانشگاه آزاد اسلامی</html:p></html:div></html:div><html:div class="alert note">قلم رابط آیین‌یار: Vazirmatn (وزیرمتن)، همراه بسته و قابل استفاده به‌صورت آفلاین. فایل فونت تحت مجوز مستقل SIL Open Font License 1.1 منتشر شده است.</html:div></html:section>
       </html:main>
     </html:div>
   </html:div>
