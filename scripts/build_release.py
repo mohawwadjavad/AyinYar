@@ -44,7 +44,7 @@ def validate() -> tuple[str, dict]:
         SRC / "content/assets/institution-academic-mark.svg",
         SRC / "content/assets/fonts/Vazirmatn-Variable.woff2",
         ROOT / "README.md", ROOT / "INSTALL_FA.md", ROOT / "PRIVACY_FA.md",
-        ROOT / "LICENSE", ROOT / "THANKS.txt", ROOT / "THIRD_PARTY_NOTICES.md",
+        ROOT / "LICENSE", ROOT / "THANKS.txt", ROOT / "راهنمای فعالسازی هوش مصنوعی.txt", ROOT / "THIRD_PARTY_NOTICES.md",
         ROOT / "fonts/FONT_LICENSE_OFL_1.1.txt", ROOT / "CHANGELOG_FA.md", ROOT / "QA_REPORT_FA.md",
         SRC / "LICENSE", SRC / "THIRD_PARTY_NOTICES.md", SRC / "content/assets/fonts/OFL.txt",
     ]
@@ -179,6 +179,8 @@ def main():
         xpi_manifest = json.loads(zf.read("manifest.json").decode("utf-8"))
         xpi_zotero = xpi_manifest.get("applications", {}).get("zotero", {})
         check(xpi_zotero.get("update_url") == expected_update_url, "Required Zotero update_url missing from built XPI")
+        ui = zf.read("content/selector.xhtml").decode("utf-8")
+        check('id="ai-key-link"' in ui and 'id="ai-key-guide"' in ui, "AI Key onboarding missing in XPI")
 
     # Publish a Mozilla-style update manifest alongside every release.
     addon_id = zotero_data["id"]
@@ -213,6 +215,10 @@ def main():
         zip_add_tree(zf, ROOT, Path(f"AyinYar_v{VERSION}"))
         zf.write(xpi, Path(f"AyinYar_v{VERSION}") / "release" / xpi.name)
         zf.write(updates_path, Path(f"AyinYar_v{VERSION}") / "release" / "updates.json")
+
+    with zipfile.ZipFile(complete_zip) as zf:
+        check(f"AyinYar_v{VERSION}/راهنمای فعالسازی هوش مصنوعی.txt" in zf.namelist(), "Persian AI guide missing from Complete ZIP")
+        check(zf.testzip() is None, "Complete ZIP integrity check failed")
 
     sums = []
     for path in (xpi, source_zip, complete_zip, updates_path):
