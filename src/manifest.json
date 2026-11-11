@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
   "name": "آیین‌یار پژوهش — بازرس منابع و رساله",
-  "version": "0.22.1",
-  "description": "آیین‌یار پژوهش ۰.۲۲.۱: اصلاح نصب در Zotero 10 و افزودن مسیر به‌روزرسانی پایدار.",
+  "version": "0.22.2",
+  "description": "آیین‌یار پژوهش ۰.۲۲.۲: راهنمای فعال‌سازی Gemini و OpenRouter، پیوند دریافت کلید و پیام تازه سازنده.",
   "author": "محمدجواد شریفی | Mohammad Javad Sharifi",
   "icons": {
     "48": "assets/ayinyar-64.png",
