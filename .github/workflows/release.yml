@@ -26,8 +26,12 @@ jobs:
         run: python -m pip install tinycss2 fonttools
       - name: Validate source
         run: python scripts/build_release.py --validate-only
-      - name: Run mocked runtime tests
-        run: python tests/test_runtime_bridges.py
+      - name: Run mocked runtime and feature regression tests
+        run: |
+          python tests/test_runtime_bridges.py
+          python tests/test_ai_onboarding.py
+          python tests/test_core_regression.py
+          python tests/test_ux_static.py
       - name: Build release files
         run: python scripts/build_release.py
       - name: Create GitHub Release and upload assets
@@ -37,4 +41,4 @@ jobs:
           gh release create "$GITHUB_REF_NAME" \
             dist/*.xpi dist/*.zip dist/updates.json dist/SHA256SUMS.txt dist/BUILD_MANIFEST.json \
             --title "AyinYar Research $GITHUB_REF_NAME" \
-            --notes-file CHANGELOG_FA.md
+            --notes-file RELEASE_NOTES_FA.md
