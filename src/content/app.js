@@ -18,10 +18,13 @@
   const show = (id, value) => { const node=$(id); if (node) node.textContent = value; };
   const add = (tag, className, text) => { const el=document.createElementNS('http://www.w3.org/1999/xhtml',tag); if(className) el.className=className; if(text!==undefined) el.textContent=text; return el; };
   function switchPage(id) {
+    if(!Object.prototype.hasOwnProperty.call(pageNames,id) || !document.getElementById('page-'+id))return false;
     for (const pane of document.querySelectorAll('.page')) pane.classList.toggle('active',pane.id==='page-'+id);
     window.AyinSidebar?.activate(id);
-    show('top-title',pageNames[id] || pageNames.dashboard);
+    show('top-title',pageNames[id]);
     if(id==='deadlines')renderDeadlines();
+    window.AyinUX?.onNavigate(id);
+    return true;
   }
   function safeGet(item, field) { try { return item.getField(field) || ''; } catch (e) { return ''; } }
   function safeCount(item) { try { return item.getCreators().length; } catch (e) { return 0; } }
@@ -722,7 +725,7 @@
     if(!filtered.length){dest.appendChild(add('p','helper','اطلاعیه‌ای در این فیلتر وجود ندارد. محتوای کانال بله به‌صورت خودکار خوانده نمی‌شود.'));return;}
     for(const n of filtered){
       const source=window.AyinNews.getSource(n.source_id);
-      const card=add('article','news-record');card.appendChild(add('div','news-record-title',n.title));
+      const card=add('article','news-record');card.setAttribute('data-news-id',n.id);card.appendChild(add('div','news-record-title',n.title));
       card.appendChild(add('div','news-record-meta',`${window.AyinNews.CATEGORIES[n.category]} · ${source?.name||'منبع نامشخص'}`));
       card.appendChild(add('div','news-record-meta',`انتشار: ${n.published_jalali||'نامشخص'}${n.deadline_jalali?' · تاریخ اعلام‌شده برای اقدام: '+n.deadline_jalali:''}`));
       if(n.excerpt)card.appendChild(add('p','news-record-body',n.excerpt));
@@ -887,7 +890,9 @@
       box.appendChild(add('div','deadline-meta',`منبع: ${source?.name||'نامشخص'} · ثبت دستی کاربر، تأییدنشده`));
       const buttons=add('div','news-record-footer');
       const btn=add('button','action secondary deadline-mini','دیدن اطلاعیه در آرشیو');btn.setAttribute('type','button');
-      btn.addEventListener('click',()=>{$('news-search').value='';$('news-filter').value='all'; window.AyinChoices?.sync('news-filter'); switchPage('news');renderNews();});
+      btn.addEventListener('click',()=>{$('news-search').value='';$('news-filter').value='all'; window.AyinChoices?.sync('news-filter'); switchPage('news');renderNews();
+        const found=Array.from(document.querySelectorAll('[data-news-id]')).find(el=>el.getAttribute('data-news-id')===n.id);
+        if(found){found.classList.add('ux-spotlight');try{found.scrollIntoView({block:'center'});}catch(_){}}});
       buttons.appendChild(btn);box.appendChild(buttons);target.appendChild(box);
     }
     if(!items.length){

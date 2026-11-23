@@ -465,3 +465,101 @@
 .ai-api-guide-details p{margin:7px 0;line-height:2}
 .ai-key-link-status{margin:0;font-size:12px;color:#6e4a19}
 .ai-key-link-status:empty{display:none}
+
+/* v0.30.0 UX refresh — user journeys, discoverability, focus and small-window support.
+ * Isolated .ux-* classes preserve existing modules and their established layouts. */
+.ux-skip-link{position:fixed;right:12px;top:-70px;z-index:500;padding:9px 16px;background:#fff;color:#124d73;border:2px solid #13769e;border-radius:9px;font-weight:800;text-decoration:none}
+.ux-skip-link:focus{top:10px}
+.ux-topbar{gap:14px;min-height:75px;padding:10px 25px;position:relative;z-index:5}
+.ux-topbar-main{min-width:0;display:flex;align-items:center;gap:9px;flex:1 1 auto}
+.ux-heading{min-width:0;display:flex;flex-direction:column;gap:0;line-height:1.45}
+.ux-breadcrumb{font-size:10px;color:#607d95;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+#top-title{font-size:15px;font-weight:850;color:#143d60;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ux-topbar .top-right{display:flex;gap:8px;min-width:0;flex:0 1 auto}
+.ux-topbar-button,.ux-topbar-icon{font:inherit;color:#245777;background:#f2f7fb;border:1px solid #dce8ef;border-radius:11px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;white-space:nowrap;min-height:39px;padding:7px 11px;font-size:12px;font-weight:750;line-height:1.4}
+.ux-topbar-icon{width:39px;padding:7px;font-size:19px}
+.ux-mobile-toggle{display:none}
+.ux-topbar-button:hover,.ux-topbar-icon:hover{background:#e7f4fa;border-color:#7fb4cd}
+.ux-topbar kbd{font-family:inherit;direction:ltr;color:#658296;background:#fff;border:1px solid #dce7ef;border-radius:5px;padding:2px 5px;font-weight:600;font-size:9px}
+.ux-topbar-button:focus-visible,.ux-topbar-icon:focus-visible,.ux-workflow:focus-visible,.ux-onboarding-search:focus-visible,.ux-icon-close:focus-visible,.ux-command-result:focus-visible{outline:3px solid #0f86aa;outline-offset:2px}
+.ux-back[hidden],.ux-sidebar-scrim[hidden],.ux-help-panel[hidden],.ux-command-overlay[hidden]{display:none!important}
+.ux-sidebar-scrim{display:none;position:fixed;inset:0;border:0;background:rgba(8,29,51,.54);z-index:140;cursor:pointer}
+.ux-page-hint{background:#f3f9fc;border:1px solid #cddfe8;border-radius:13px;padding:11px 15px;margin:-7px 0 20px;max-width:100%;box-shadow:0 1px 3px rgba(18,58,85,.04);color:#2e5874;font-size:12px;line-height:1.85}
+.ux-page-hint summary{font-weight:800;color:#17617d;cursor:pointer;line-height:1.9;outline-offset:3px}
+.ux-page-hint summary:focus-visible{outline:3px solid #2486ac;border-radius:5px}
+.ux-page-hint[open]{padding-bottom:13px}
+.ux-page-hint p{margin:10px 0 5px;color:#49687f}
+.ux-page-hint ol{margin:6px 0 0;padding:0 25px 0 0;max-width:900px}
+.ux-page-hint li{padding:3px 0}
+.ux-onboarding{background:linear-gradient(128deg,#f5fbff,#ffffff 66%);border:1px solid #cbdfea;border-radius:19px;padding:21px 23px;margin:0 0 23px;box-shadow:0 5px 20px rgba(22,79,111,.05)}
+.ux-onboarding-head{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:16px}
+.ux-onboarding-head h2{font-size:18px;color:#153f61;margin:3px 0 0}
+.ux-kicker{display:inline-block;color:#0d7997;font-size:11px;font-weight:850;letter-spacing:.1px}
+.ux-onboarding-search{font:inherit;border:1px solid #c1dce9;background:#fff;border-radius:11px;color:#195f7e;min-height:40px;padding:8px 12px;font-size:12px;font-weight:800;cursor:pointer}
+.ux-onboarding-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.ux-workflow{cursor:pointer;text-align:right;display:flex;flex-direction:column;align-items:flex-start;min-width:0;gap:8px;min-height:128px;border:1px solid #dce8f0;background:#fff;border-radius:13px;padding:14px 13px;font:inherit;color:#1f5273;transition:border-color .16s,transform .16s,box-shadow .16s}
+.ux-workflow:hover{border-color:#65abc4;box-shadow:0 5px 16px rgba(13,96,129,.09);transform:translateY(-1px)}
+.ux-workflow-symbol{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;background:#eaf5f9;border-radius:10px;color:#12628a;font-size:19px}
+.ux-workflow-copy{display:flex;flex-direction:column;gap:3px;min-width:0}
+.ux-workflow-copy strong{font-size:12.5px;line-height:1.8;color:#174466}
+.ux-workflow-copy small{font-size:10.5px;line-height:1.8;color:#657f91;font-weight:500;overflow-wrap:anywhere}
+.ux-onboarding-note{color:#5c798e;font-size:11px;line-height:1.9;margin:12px 0 0}
+.ux-command-overlay{position:fixed;inset:0;display:flex;align-items:flex-start;justify-content:center;z-index:300;padding:clamp(22px,13vh,110px) 15px 25px;background:rgba(8,28,49,.64);overflow:auto}
+.ux-command-dialog{background:#fff;border-radius:18px;box-shadow:0 20px 75px rgba(5,25,40,.25);padding:20px;width:min(620px,100%);max-height:76vh;display:flex;flex-direction:column;gap:12px;direction:rtl}
+.ux-command-head{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:15px;font-weight:900;color:#173e60}
+.ux-icon-close{min-width:34px;min-height:34px;display:flex;align-items:center;justify-content:center;background:#f2f6fa;border:1px solid #dae6ef;color:#2c5e79;border-radius:9px;font-size:25px;cursor:pointer;font-family:inherit;line-height:1}
+#ux-command-input{font-family:inherit;font-size:14px;padding:12px 14px;min-height:50px;border:2px solid #b3d8e7;border-radius:12px;color:#1c445c;background:#fff;outline-offset:2px;direction:rtl;width:100%}
+#ux-command-input:focus{border-color:#207e9e;outline:2px solid #a8dce8}
+.ux-command-results{display:flex;flex-direction:column;gap:5px;min-height:0;overflow:auto;padding:3px 0 4px;scrollbar-width:thin}
+.ux-command-result{font-family:inherit;border:1px solid transparent;border-radius:10px;text-align:right;padding:11px 13px;color:#143954;background:#fff;cursor:pointer;display:flex;flex-direction:column;gap:3px;min-height:60px}
+.ux-command-result[aria-selected="true"],.ux-command-result:hover{background:#eaf5f9;border-color:#c4dfea}
+.ux-command-result strong{font-size:13px;line-height:1.6}
+.ux-command-result small{color:#5b778a;font-size:10.5px;line-height:1.75;white-space:normal}
+.ux-command-empty{padding:24px 10px;color:#6b8394;text-align:center;font-size:13px}
+.ux-command-foot{color:#798e9c;font-size:10px;border-top:1px solid #e4edf3;padding-top:9px}
+.ux-help-panel{position:fixed;top:0;right:0;bottom:0;width:min(410px,calc(100vw - 30px));z-index:260;background:#fff;box-shadow:-12px 0 45px rgba(13,38,61,.2);display:flex;flex-direction:column;direction:rtl;border-left:1px solid #dce8ef}
+.ux-help-header{padding:16px 22px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #e6edf2;font-size:13px;color:#21516b}
+.ux-help-body{padding:25px 25px 45px;overflow:auto;line-height:2;color:#41627a;font-size:13px}
+.ux-help-body h2{font-size:21px;margin:5px 0 10px;color:#174765}
+.ux-help-body p{margin:0 0 18px}
+.ux-help-body ol{padding-right:25px;margin:10px 0 18px}
+.ux-help-body li{margin:0 0 14px}
+.ux-help-tip{background:#fff7e9;border:1px solid #efdec2;padding:13px;border-radius:12px;color:#866238;font-size:11px;line-height:2}
+@media(max-width:1200px){.ux-onboarding-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ux-workflow{min-height:104px}.ux-topbar .top-pill{display:none}}
+@media(max-width:1010px){.ux-topbar kbd{display:none}.ux-topbar{padding:9px 15px}}
+@media(max-width:900px){
+  .sidebar{position:fixed!important;top:0;bottom:0;right:0;z-index:150;width:min(305px,82vw)!important;height:100%!important;transform:translateX(105%);transition:transform .18s ease;box-shadow:-8px 0 25px rgba(9,36,59,.15)}
+  #app.ux-mobile-open .sidebar{transform:translateX(0)}
+  #app.ux-mobile-open .ux-sidebar-scrim{display:block}
+  .ux-mobile-toggle{display:inline-flex}
+  .ux-topbar{min-height:67px}
+  .ux-topbar .top-right{gap:5px}
+  .ux-topbar-button{font-size:13px;min-width:38px}
+  .ux-topbar-button span{display:none}
+  .page-container{padding:22px 20px}
+}
+@media(max-width:600px){
+  .ux-topbar{padding:7px 9px;gap:6px}
+  .ux-topbar-main{gap:4px}
+  .ux-topbar-icon{min-width:34px;width:34px;min-height:35px;font-size:17px}
+  .ux-topbar-button{padding:7px;min-height:35px;min-width:35px}
+  .ux-topbar .version{display:none}
+  .ux-breadcrumb{font-size:9px}
+  #top-title{font-size:12px}
+  .page-container{padding:14px 12px}
+  .ux-onboarding{padding:15px;margin-bottom:17px}
+  .ux-onboarding-grid{grid-template-columns:1fr 1fr;gap:7px}
+  .ux-workflow{padding:10px;min-height:115px}
+  .ux-workflow-copy strong{font-size:11px}
+  .ux-workflow-copy small{font-size:10px}
+  .ux-onboarding-head h2{font-size:15px}
+  .ux-command-dialog{padding:14px;max-height:86vh}
+}
+@media(max-width:380px){.ux-onboarding-grid{grid-template-columns:1fr}.ux-workflow{min-height:80px;flex-direction:row;align-items:center}.ux-command-result small{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.ux-workflow,.sidebar{transition:none!important}}
+/* Make a deadline's "view in archive" action land on the actual record. */
+.news-record.ux-spotlight{outline:3px solid #2b91b2;outline-offset:3px;background:#f0faff}
+.ux-report-button{width:100%;background:#17658b;color:#fff;font:inherit;font-size:12px;font-weight:850;border:0;border-radius:11px;min-height:44px;cursor:pointer;margin-top:22px}
+.ux-report-button:hover{background:#115776}
+.ux-report-button:focus-visible{outline:3px solid #249bb3;outline-offset:3px}
+.ux-report-status{font-size:11px;color:#2c6078;white-space:pre-wrap;margin-top:8px}

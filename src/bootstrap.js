@@ -45,6 +45,16 @@ function ayinyarCopyText(rawText) {
 }
 function ayinyarOpen(win, autoScan=false) {
   try {
+    // Reuse the existing dashboard instead of stacking overlapping copies.
+    // A context-menu extraction request still opens a dedicated scan window.
+    if (!autoScan) {
+      for (const existing of ayinyarDialogs) {
+        if (!existing.closed && existing.opener === win) {
+          existing.focus();
+          return existing;
+        }
+      }
+    }
     const dialog = win.openDialog('chrome://ayinyar-selector/content/selector.xhtml', 'ayinyar-dashboard', 'chrome,centerscreen,resizable,dialog=no,width=1120,height=790', {
       ayinyarScan: autoScan,
       ayinyarOpenExternalURL,

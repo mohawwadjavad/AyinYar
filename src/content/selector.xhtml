@@ -3,6 +3,8 @@
         xmlns:html="http://www.w3.org/1999/xhtml" title="آیین‌یار پژوهش | دستیار پژوهشی">
   <html:link rel="stylesheet" href="chrome://ayinyar-selector/content/selector.css" />
   <html:div id="app" dir="rtl">
+    <html:a class="ux-skip-link" href="#ux-main">پرش به محتوای اصلی</html:a>
+    <html:button id="ux-sidebar-scrim" class="ux-sidebar-scrim" type="button" aria-label="بستن فهرست ابزارها" hidden="hidden"></html:button>
     <html:aside class="sidebar" aria-label="ناوبری آیین‌یار">
       <html:div class="sidebar-header">
         <html:div class="brand"><html:img src="chrome://ayinyar-selector/content/ayinyar-brand.png" alt="نشان آیین‌یار"/><html:div><html:strong>آیین‌یار پژوهش</html:strong><html:small>AyinYar Research</html:small></html:div></html:div>
@@ -48,12 +50,19 @@
       <html:div class="sidebar-footer">
         <html:button type="button" class="nav-btn nav-footer-link nav-researcher" data-page="researcher"><html:span class="nav-icon" aria-hidden="true">◉</html:span><html:span class="nav-label">پروفایل پژوهشگر</html:span></html:button>
         <html:button type="button" class="nav-btn nav-footer-link" data-page="about"><html:span class="nav-icon" aria-hidden="true">ⓘ</html:span><html:span class="nav-label">درباره افزونه</html:span></html:button>
-        <html:div class="sidebar-bottom"><html:span class="dot"></html:span> آفلاین + جست‌وجوی رایگان آنلاین<html:small>نسخه ۰.۲۲.۲</html:small></html:div>
+        <html:div class="sidebar-bottom"><html:span class="dot"></html:span> آفلاین + جست‌وجوی رایگان آنلاین<html:small>نسخه ۰.۳۰.۰</html:small></html:div>
       </html:div>
     </html:aside>
     <html:div class="workspace">
-      <html:header class="topbar"><html:div id="top-title">داشبورد پژوهشی</html:div><html:div class="top-right"><html:span class="top-pill">دانشگاه آزاد · نجف‌آباد</html:span><html:span class="version">v0.22.2</html:span></html:div></html:header>
-      <html:main class="page-container">
+      <html:header class="topbar ux-topbar">
+          <html:div class="ux-topbar-main">
+            <html:button id="ux-mobile-menu" class="ux-topbar-icon ux-mobile-toggle" type="button" aria-label="بازکردن فهرست ابزارها" aria-controls="nav" aria-expanded="false">☰</html:button>
+            <html:button id="ux-back" class="ux-topbar-icon ux-back" type="button" aria-label="بازگشت به صفحه قبلی" title="بازگشت به صفحه قبلی" hidden="hidden">→</html:button>
+            <html:div class="ux-heading"><html:div id="ux-breadcrumb" class="ux-breadcrumb">شروع / داشبورد</html:div><html:div id="top-title">داشبورد پژوهشی</html:div></html:div>
+          </html:div>
+          <html:div class="top-right"><html:span class="top-pill">دانشگاه آزاد · نجف‌آباد</html:span><html:button id="ux-search-trigger" class="ux-topbar-button" type="button" title="جست‌وجو در ابزارها (Ctrl+K)" aria-haspopup="dialog" aria-controls="ux-command-overlay">⌕ <html:span>جست‌وجوی ابزارها</html:span><html:kbd>Ctrl+K</html:kbd></html:button><html:button id="ux-help-toggle" class="ux-topbar-button ux-help-button" type="button" aria-expanded="false" aria-controls="ux-help-panel">؟ <html:span>راهنما</html:span></html:button><html:span class="version">v0.30.0</html:span></html:div>
+        </html:header>
+      <html:main class="page-container" id="ux-main" tabindex="-1">
         <html:section id="page-dashboard" class="page active"><html:div class="eyebrow">مرکز کنترل پژوهش</html:div><html:h1>مسیر پژوهش، منظم و مستند.</html:h1><html:p class="lead">مرور وضعیت منابع، فایل Word و بسته مقررات دانشگاهی در یک محیط فارسی. این نسخه ارزیابی رسمی دانشگاه نیست.</html:p>
           <html:div class="researcher-welcome" aria-label="خوشامدگویی پژوهشگر"><html:div class="researcher-welcome-symbol" aria-hidden="true">✦</html:div><html:div class="researcher-welcome-text"><html:h2 id="researcher-dashboard-greeting">به آیین‌یار پژوهش خوش آمدی.</html:h2><html:p id="researcher-dashboard-detail">نام پژوهشگر از تنظیمات محلی یا حساب Zotero دریافت می‌شود.</html:p></html:div><html:button type="button" class="action secondary" data-go="researcher">ویرایش پروفایل ←</html:button></html:div>
           <html:div class="stats"><html:div class="stat"><html:span>منابع بررسی‌شده</html:span><html:strong id="stat-items">—</html:strong><html:small>رکوردهای انتخاب‌شده در Zotero</html:small></html:div><html:div class="stat"><html:span>اخطارهای کتاب‌شناختی</html:span><html:strong id="stat-issues">—</html:strong><html:small>پیشنهاد بررسی داده، نه تخلف دانشگاهی</html:small></html:div><html:div class="stat"><html:span>قواعد دانشگاهی فعال</html:span><html:strong>۰</html:strong><html:small>در انتظار نسخه رسمی شیوه‌نامه</html:small></html:div></html:div>
@@ -319,7 +328,7 @@
         </html:section>
 
         <html:section id="page-ai-local" class="page">
-          <html:div class="eyebrow">AyinYar AI Hub · Offline + Online Free Tier · 0.22.2</html:div>
+          <html:div class="eyebrow">AyinYar AI Hub · Offline + Online Free Tier · 0.30.0</html:div>
           <html:h1>دستیار هوش مصنوعی آیین‌یار</html:h1>
           <html:p class="lead">عنوان و چکیده منبع را به فارسی تحلیل کن. بدون نصب Ollama هم می‌توانی با کلید API رایگان خودت از Gemini یا OpenRouter استفاده کنی. این صفحه هنوز استخراج متن کامل PDF یا ارجاع صفحه‌ای ندارد.</html:p>
           <html:div class="panel ai-panel">
@@ -627,8 +636,20 @@
         <html:section id="page-about" class="page"><html:div class="eyebrow">درباره محصول</html:div><html:h1>آیین‌یار پژوهش</html:h1><html:div class="panel about-card"><html:img src="chrome://ayinyar-selector/content/ayinyar-brand.png" alt="نشان آیین‌یار"/><html:div><html:h2>دستیار پژوهش و کنترل مستندات</html:h2><html:p>سازنده: <html:strong>محمدجواد شریفی</html:strong></html:p><html:p>دانشجوی دکتری تخصصی معماری، دانشگاه آزاد اسلامی واحد نجف‌آباد</html:p><html:p>پاییز ۱۴۰۵</html:p><html:div class="about-contact" aria-label="راه‌های ارتباطی سازنده">
                     <html:div class="about-contact-row"><html:span class="about-contact-label">ایمیل</html:span><html:a class="about-contact-link" dir="ltr" href="mailto:pumortem@gmail.com">pumortem@gmail.com</html:a></html:div>
                     <html:div class="about-contact-row"><html:span class="about-contact-label">وب‌سایت</html:span><html:a class="about-contact-link" dir="ltr" href="https://theavanstudio.ir/mohawwadjavad" target="_blank" rel="noopener noreferrer">theavanstudio.ir/mohawwadjavad</html:a></html:div>
-                  </html:div><html:p id="about-link-status" class="about-link-status" role="status" aria-live="polite"></html:p><html:p class="muted">نسخه ۰.۲۲.۲ · نمونه پژوهشی مستقل · بدون تأیید یا وابستگی رسمی به دانشگاه آزاد اسلامی</html:p></html:div></html:div><html:div class="alert note">قلم رابط آیین‌یار: Vazirmatn (وزیرمتن)، همراه بسته و قابل استفاده به‌صورت آفلاین. فایل فونت تحت مجوز مستقل SIL Open Font License 1.1 منتشر شده است.</html:div></html:section>
+                  </html:div><html:p id="about-link-status" class="about-link-status" role="status" aria-live="polite"></html:p><html:p class="muted">نسخه ۰.۳۰.۰ · نمونه پژوهشی مستقل · بدون تأیید یا وابستگی رسمی به دانشگاه آزاد اسلامی</html:p></html:div></html:div><html:div class="alert note">قلم رابط آیین‌یار: Vazirmatn (وزیرمتن)، همراه بسته و قابل استفاده به‌صورت آفلاین. فایل فونت تحت مجوز مستقل SIL Open Font License 1.1 منتشر شده است.</html:div></html:section>
       </html:main>
+    </html:div>
+    <html:aside id="ux-help-panel" class="ux-help-panel" hidden="hidden" aria-label="راهنمای استفاده از ابزار فعال">
+      <html:div class="ux-help-header"><html:strong>راهنمای این بخش</html:strong><html:button id="ux-help-close" class="ux-icon-close" type="button" aria-label="بستن راهنما">×</html:button></html:div>
+      <html:div class="ux-help-body"><html:span class="ux-kicker">گام‌به‌گام</html:span><html:h2 id="ux-help-title">داشبورد</html:h2><html:p id="ux-help-summary"></html:p><html:ol id="ux-help-steps"></html:ol><html:div class="ux-help-tip">اگر مشکلی مشاهده کردی، نام ابزار، مراحل تکرار خطا و نسخهٔ Zotero را همراه گزارش بفرست؛ کلید API و اطلاعات خصوصی را نفرست.</html:div><html:button id="ux-report-issue" class="ux-report-button" type="button">✉ گزارش مشکل این بخش</html:button><html:p id="ux-report-status" class="ux-report-status" role="status" aria-live="polite"></html:p></html:div>
+    </html:aside>
+    <html:div id="ux-command-overlay" class="ux-command-overlay" hidden="hidden">
+      <html:div class="ux-command-dialog" role="dialog" aria-modal="true" aria-labelledby="ux-command-label">
+        <html:div class="ux-command-head"><html:label for="ux-command-input" id="ux-command-label">ابزار موردنظرت را پیدا کن</html:label><html:button id="ux-command-close" class="ux-icon-close" type="button" aria-label="بستن جست‌وجو">×</html:button></html:div>
+        <html:input id="ux-command-input" type="search" autocomplete="off" placeholder="مثلاً: مقاله، Word، PDF، هوش مصنوعی…" role="combobox" aria-autocomplete="list" aria-expanded="true" aria-controls="ux-command-results"/>
+        <html:div id="ux-command-results" class="ux-command-results" role="listbox" aria-label="نتایج جست‌وجوی ابزارها"></html:div>
+        <html:div class="ux-command-foot">Enter: رفتن به ابزار · ↑↓: انتخاب · Esc: بستن</html:div>
+      </html:div>
     </html:div>
   </html:div>
   <html:script src="chrome://ayinyar-selector/content/bank.js"></html:script>
@@ -667,4 +688,5 @@
   <html:script src="chrome://ayinyar-selector/content/matrix-ai.js"></html:script>
   <html:script src="chrome://ayinyar-selector/content/matrix-batch-core.js"></html:script>
   <html:script src="chrome://ayinyar-selector/content/matrix-batch.js"></html:script>
+  <html:script src="chrome://ayinyar-selector/content/ux-system.js"></html:script>
 </window>

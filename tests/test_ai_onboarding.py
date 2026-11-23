@@ -11,7 +11,7 @@ style = (ROOT / 'src/content/selector.css').read_text('utf-8')
 manual = (ROOT / 'راهنمای فعال کردن هوش مصنوعی افزونه.txt').read_text('utf-8')
 thanks = (ROOT / 'THANKS.txt').read_text('utf-8')
 manifest = json.loads((ROOT / 'src/manifest.json').read_text('utf-8'))
-assert manifest['version'] == '0.22.2'
+assert manifest['version'] == '0.30.0'
 assert manifest['applications']['zotero']['id'] == 'ayinyar-university-selector@research.local'
 assert manifest['applications']['zotero']['update_url'] == 'https://github.com/mohawwadjavad/AyinYar/releases/latest/download/updates.json'
 providers = {'gemini': 'https://aistudio.google.com/apikey', 'openrouter': 'https://openrouter.ai/settings/keys'}
